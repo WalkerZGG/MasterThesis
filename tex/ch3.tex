@@ -5,13 +5,78 @@
 \label{ch3}
 
 \section{主方程}
-为了在模型中加入环境的影响，我们可以假设系统$S$和热库$R$的耦合具有如下的哈密顿量形式：
+
+\subsection{Liouville--von Neumann方程的解}
+为了在模型中加入环境的影响，我们可以假设系统$S$和外部环境$R$的耦合具有如下的哈密顿量形式：
 \begin{equation}
-H=H_{S}+H_{R}+H_{S R}
+\mathcal{H}=H_{S}+H_{R}+H_{S R}
+\label{Hsr}
 \end{equation}
-这里$H_{S}$和$H_{R}$分别是系统和热库的哈密顿量，$H_{SR}$为相互作用的哈密顿量。我们可以先不拘泥于热库哈密顿量的具体形式，只需要知道他可以表示为温度和能量的函数。接下来我们的目标是在无需关注热库具体状态的情形下研究混合体系$S \otimes R$中目标系统$S$的演化。为了做到这一点，需要用到密度矩的工具。我们用$\chi(t)$表示$S \otimes R$的密度算符，定义约化密度算符为
+这里$H_{S}$和$H_{R}$分别是系统和环境的哈密顿量，$H_{SR}$为相互作用的哈密顿量。我们可以先不拘泥于环境哈密顿量的具体形式，只需要知道他可以表示为温度和能量的函数。我们的目标是在无需关注环境具体状态的情形下研究混合体系$S \otimes R$中目标系统$S$的演化。为了做到这一点，需要用到密度算符的工具。我们用$\chi(t)$表示$S \otimes R$的密度算符并对环境的部分求迹，定义约化密度算符为
 \begin{equation}
 \rho(t) \equiv \operatorname{tr}_{R}[\chi(t)]
+\end{equation}
+显然，如果我们有了约化密度算符$\rho(t)$,很容易就能算出系统$S$的Hilbert空间中任一算符$\hat{O}$的平均，而不需要知道$\chi(t)$的具体形式：
+\begin{equation}
+\langle\hat{O}\rangle=\operatorname{tr}_{S \otimes R}[\hat{O} \chi(t)]=\operatorname{tr}_{S}\left\{\hat{O} \operatorname{tr}_{R}[\chi(t)]\right\}=\operatorname{tr}_{S}[\hat{O} \rho(t)]
+\end{equation}
+接下来我们要做的是得到$\rho(t)$演化方程。
+
+%Schr\"{o}dinger
+已知$\chi$的Liouville--von Neumann方程为
+\begin{equation}
+\dot{\chi}=\frac{1}{i \hbar}[\mathcal{H}, \chi]
+\label{LMEq1}
+\end{equation}
+这里可以把$\mathcal{H}$中的$H_{S}+H_{R}$看作主要部分，$H_{SR}$当成次要部分，转入相互作用绘景下来方便我们的处理：
+\begin{equation}
+\tilde{\chi}(t) \equiv e^{(i / \hbar)\left(H_{S}+H_{R}\right) t} \chi(t) e^{-(i / \hbar)\left(H_{S}+H_{R}\right) t}
+\end{equation}
+结合\eqref{Hsr}、\eqref{LMEq1}与上式后可以得到
+\begin{align}
+\dot{\tilde{\chi}} &=\frac{i}{\hbar}\left(H_{S}+H_{R}\right) \tilde{\chi}-\frac{i}{\hbar} \tilde{\chi}\left(H_{S}+H_{R}\right)+e^{(i / \hbar)\left(H_{S}+H_{R}\right) t} \dot{\chi} e^{-(i / \hbar)\left(H_{S}+H_{R}\right) t} \notag \\
+&=\frac{1}{i \hbar}\left[\tilde{H}_{S R}(t), \tilde{\chi}\right]
+\label{LMEq2}
+\end{align}
+% oOSRHH{\ttfamily oOSRHH}{\sffamily oOSRHH}
+其中$\tilde{H}_{S R}(t)$是显含时间的量：
+\begin{equation}
+\tilde{H}_{S R}(t) \equiv e^{(i / \hbar)\left(H_{S}+H_{R}\right) t} H_{S R} e^{-(i / \hbar)\left(H_{S}+H_{R}\right) t}
+\end{equation}
+对方程\eqref{LMEq2}直接积分可以得到
+\begin{equation}
+\tilde{\chi}(t)=\chi(0)+\frac{1}{i \hbar} \int_{0}^{t} d t^{\prime}\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\chi}\left(t^{\prime}\right)\right]
+\end{equation}
+把上式回代到方程\eqref{LMEq2}的等号右侧：
+\begin{equation}
+\dot{\tilde{\chi}}=\frac{1}{i \hbar}\left[\tilde{H}_{S R}(t), \chi(0)\right]-\frac{1}{\hbar^{2}} \int_{0}^{t} d t^{\prime}\left[\tilde{H}_{S R}(t),\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\chi}\left(t^{\prime}\right)\right]\right]
+\label{LMExpd2}
+\end{equation}
+以上的推导都是严格的，我们甚至可以重复\eqref{LMEq2}到\eqref{LMExpd2}的过程来得到无限多的积分项，但是这里做到二阶就足够引入我们下面的近似了。
+
+\subsection{Born--Markov近似}
+假设$t=0$时的系统$S$和环境$R$之间没有关联但是相互作用已然存在，我们可以把$\chi(0)=\tilde{\chi}(0)$表示为
+\begin{equation}
+\chi(0)=\rho(0) R_{0}
+\end{equation}
+其中$R_{0}$是初始时刻环境的密度矩阵。记$\tilde{\chi}(t)$求迹后的密度矩阵为$\tilde{\rho}(t)$：
+\begin{equation}
+\operatorname{tr}_{R}[\tilde{\chi}(t)]=e^{(i / \hbar) H_{S} t} \rho(t) e^{-(i / \hbar) H_{S} t} \equiv \tilde{\rho}(t)
+\end{equation}
+对方程\eqref{LMExpd2}进行求迹运算后我们就可以得到如下的主方程：
+\begin{equation}
+\dot{\tilde{\rho}}=-\frac{1}{\hbar^{2}} \int_{0}^{t} d t^{\prime} \operatorname{tr}_{R}\left\{\left[\tilde{H}_{S R}(t),\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\chi}\left(t^{\prime}\right)\right]\right]\right\}
+\label{MasterEq}
+\end{equation}
+这里我们已经通过假设$\operatorname{tr}_{R}\left[\tilde{H}_{S R}(t) R_{0}\right]=0$消去了\eqref{LMExpd2}中的第一项。这项假设需要相互作用$H_{S R}$在$R_{0}$态下的平均值为零，我们总是可以满足这个条件，只用在哈密顿量里考虑是否加入$\operatorname{tr}_{R}\left(H_{S R} R_{0}\right)$即可。
+
+虽然已经假设了初始时$S$和$R$无关，但由于相互作用的存在，之后的时刻里必然会出现新的关联，我们需要在这里引入Born近似。Born近似要求系统和环境间的相互作用是微弱的，这样一来系统就几乎不会对环境有反作用的影响。在这一近似下，环境的状态不随时间改变并且在相互作用中也一直保持不变。此外，Born近似也意味着在处理$\chi(t)$受到的环境影响时只包含$H_{SR}$的同阶量。这样一来，我们就可以把$\tilde{\chi}(t)$写作
+\begin{equation}
+\tilde{\chi}(t)=\tilde{\rho}(t) R_{0}+O\left(H_{S R}\right)
+\end{equation}
+这也可以等价的表述为：系统与环境的整体态$\tilde{\chi}(t)$的未来仅由系统态$\tilde{\rho}(t)$决定，而不依赖于环境态的历史。把Born近似应用于方程\eqref{MasterEq}并忽略掉$H_{S R}$的高阶项可以得到
+\begin{equation}
+\dot{\tilde{\rho}}=-\frac{1}{\hbar^{2}} \int_{0}^{t} d t^{\prime} \operatorname{tr}_{R}\left\{\left[\tilde{H}_{S R}(t),\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\rho}\left(t^{\prime}\right) R_{0}\right]\right]\right\}
 \end{equation}
 
 
