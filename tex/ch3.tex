@@ -7,7 +7,7 @@
 \section{主方程}
 
 \subsection{Liouville--von Neumann方程的解}
-为了在模型中加入环境的影响，我们可以假设系统$S$和外部环境$R$的耦合具有如下的哈密顿量形式：
+为了在模型中加入环境的影响，我们可以假设系统$S$和外部环境$R$的耦合具有如下形式的哈密顿量：
 \begin{equation}
 \mathcal{H}=H_{S}+H_{R}+H_{S R}
 \label{Hsr}
@@ -62,6 +62,7 @@
 其中$R_{0}$是初始时刻环境的密度矩阵。记$\tilde{\chi}(t)$求迹后的密度矩阵为$\tilde{\rho}(t)$：
 \begin{equation}
 \operatorname{tr}_{R}[\tilde{\chi}(t)]=e^{(i / \hbar) H_{S} t} \rho(t) e^{-(i / \hbar) H_{S} t} \equiv \tilde{\rho}(t)
+\label{InitialAssumption}
 \end{equation}
 对方程\eqref{LMExpd2}进行求迹运算后我们就可以得到如下的主方程：
 \begin{equation}
@@ -77,8 +78,97 @@
 这也可以等价的表述为：系统与环境的整体态$\tilde{\chi}(t)$的未来仅由系统态$\tilde{\rho}(t)$决定，而不依赖于环境态的历史。把Born近似应用于方程\eqref{MasterEq}并忽略掉$H_{S R}$的高阶项可以得到
 \begin{equation}
 \dot{\tilde{\rho}}=-\frac{1}{\hbar^{2}} \int_{0}^{t} d t^{\prime} \operatorname{tr}_{R}\left\{\left[\tilde{H}_{S R}(t),\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\rho}\left(t^{\prime}\right) R_{0}\right]\right]\right\}
+\label{MasterEqBorn}
 \end{equation}
 
+仔细观察上面的方程，我们会发现$\tilde{\rho}(t)$依赖于它自身的历史$\tilde{\rho}\left(t^{\prime}\right)$。换句话说，方程\eqref{MasterEqBorn}并不是Markov型的。Markov型的系统要求它的未来只取决于它现在的状态。所以我们另一个要做的主要近似就是把$\tilde{\rho}\left(t^{\prime}\right)$替换为$\tilde{\rho}(t)$，这样我们就得到了Born--Markov近似下的主方程：
+\begin{equation}
+\dot{\tilde{\rho}}=-\frac{1}{\hbar^{2}} \int_{0}^{t} d t^{\prime} \operatorname{tr}_{R}\left\{\left[\tilde{H}_{S R}(t),\left[\tilde{H}_{S R}\left(t^{\prime}\right), \tilde{\rho}(t) R_{0}\right]\right]\right\}
+\end{equation}
+Markov近似在物理上是合理的。具体来讲，系统$S$之所以依赖于它的历史是因为通过相互作用$H_{SR}$系统的早期态会映照在改变后的环境态上，而随后的早期态又会被改变后的环境态经过相互作用映照下来。但如果环境是一个一直处于热平衡的庞大系统，也就是热库的话，它就不会保持住来自$S$的改变太长时间。这样一来关键就在于比较热库的关联时间与系统$S$能发生明显变化的时间相比是否远远地小。下面来验证一下上述说法。
+
+我们给定相互作用$H_{SR}$一个具体点的形式
+\begin{equation}
+H_{S R}=\hbar \sum_{i} s_{i} \Gamma_{i}
+\label{HsrSpec}
+\end{equation}
+这里的$s_{i}$是系统$S$的Hilbert空间里的算符，$\Gamma_{i}$是热库$R$的Hilbert空间里的算符。然后依照上一节所述在相互作用表象下有
+\begin{equation}
+\begin{aligned}
+\tilde{H}_{S R}(t) &=\hbar \sum_{i} e^{(i / \hbar)\left(H_{S}+H_{R}\right) t} s_{i} \Gamma_{i} e^{-(i / \hbar)\left(H_{S}+H_{R}\right) t} \\
+&=\hbar \sum_{i}\left(e^{(i / \hbar) H_{S} t} s_{i} e^{-(i / \hbar) H_{S} t}\right)\left(e^{(i / \hbar) H_{R} t} \Gamma_{i} e^{-(i / \hbar) H_{R} t}\right) \\
+&=\hbar \sum_{i} \tilde{s}_{i}(t) \tilde{\Gamma}_{i}(t)
+\label{HsrSpec2}
+\end{aligned}
+\end{equation}
+此时Born近似的主方程\eqref{MasterEqBorn}就变为了
+\begin{align}
+\dot{\tilde{\rho}}=&-\sum_{i, j} \int_{0}^{t} d t^{\prime} \operatorname{tr}_{R}\left\{\left[\tilde{s}_{i}(t) \tilde{\Gamma}_{i}(t),\left[\tilde{s}_{j}\left(t^{\prime}\right) \tilde{\Gamma}_{j}\left(t^{\prime}\right), \tilde{\rho}\left(t^{\prime}\right) R_{0}\right]\right]\right\} \notag \\
+=&-\sum_{i, j} \int_{0}^{t} d t^{\prime}\left\{\tilde{s}_{i}(t) \tilde{s}_{j}\left(t^{\prime}\right) \tilde{\rho}\left(t^{\prime}\right) \operatorname{tr}_{R}\left[\tilde{\Gamma}_{i}(t) \tilde{\Gamma}_{j}\left(t^{\prime}\right) R_{0}\right]\right. \notag \\
+&-\tilde{s}_{i}(t) \tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{j}\left(t^{\prime}\right) \operatorname{tr}_{R}\left[\tilde{\Gamma}_{i}(t) R_{0} \tilde{\Gamma}_{j}\left(t^{\prime}\right)\right]-\tilde{s}_{j}\left(t^{\prime}\right) \tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{i}(t) \notag \\
+&\left.\times \operatorname{tr}_{R}\left[\tilde{\Gamma}_{j}\left(t^{\prime}\right) R_{0} \tilde{\Gamma}_{i}(t)\right]+\tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{j}\left(t^{\prime}\right) \tilde{s}_{i}(t) \operatorname{tr}_{R}\left[R_{0} \tilde{\Gamma}_{j}\left(t^{\prime}\right) \tilde{\Gamma}_{i}(t)\right]\right\} \notag \\
+=&-\sum_{i, j} \int_{0}^{t} d t^{\prime}\left\{\left[\tilde{s}_{i}(t) \tilde{s}_{j}\left(t^{\prime}\right) \tilde{\rho}\left(t^{\prime}\right)-\tilde{s}_{j}\left(t^{\prime}\right) \tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{i}(t)\right]\left\langle\tilde{\Gamma}_{i}(t) \tilde{\Gamma}_{j}\left(t^{\prime}\right)\right\rangle_{R}\right. \label{MasterEqBorn2} \\
+&\left.+\left[\tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{j}\left(t^{\prime}\right) \tilde{s}_{i}(t)-\tilde{s}_{i}(t) \tilde{\rho}\left(t^{\prime}\right) \tilde{s}_{j}\left(t^{\prime}\right)\right]\left\langle\tilde{\Gamma}_{j}\left(t^{\prime}\right) \tilde{\Gamma}_{i}(t)\right\rangle_{R}\right\} \notag 
+\end{align}
+在上式的推导中我们用到了求迹运算的循环特性---$\operatorname{tr}\left( \hat{A} \hat{B} \hat{C} \right)=\operatorname{tr}\left(\hat{C} \hat{A} \hat{B} \right)= \operatorname{tr} \left( \hat{B} \hat{C} \hat{A} \right)$以及简化符号
+\begin{equation}
+\begin{aligned}
+\left\langle\tilde{\Gamma}_{i}(t) \tilde{\Gamma}_{j}\left(t^{\prime}\right)\right\rangle_{R} &=\operatorname{tr}_{R}\left[R_{0} \tilde{\Gamma}_{i}(t) \tilde{\Gamma}_{j}\left(t^{\prime}\right)\right] \\
+\left\langle\tilde{\Gamma}_{j}\left(t^{\prime}\right) \tilde{\Gamma}_{i}(t)\right\rangle_{R} &=\operatorname{tr}_{R}\left[R_{0} \tilde{\Gamma}_{j}\left(t^{\prime}\right) \tilde{\Gamma}_{i}(t)\right]
+\end{aligned}
+\end{equation}
+热库的影响在方程\eqref{MasterEqBorn2}中体现为上式的两个关联函数。我们认为关联函数的变化在时间尺度上远快于$\tilde{\rho}(t)$的变化，理想情况下可以取
+\begin{equation}
+\left\langle\tilde{\Gamma}_{i}(t) \tilde{\Gamma}_{j}\left(t^{\prime}\right)\right\rangle_{R} \propto \delta\left(t-t^{\prime}\right)
+\end{equation}
+容易看出这样做的效果就等同于我们把$\tilde{\rho}(t^{\prime})$替换为$\tilde{\rho}(t)$。
+
+\subsection{腔磁振子系统的主方程}
+我们回到腔磁振子系统的哈密顿量，把热环境看作包含各种频率的谐振子的集合，并且认为系统内的光场和磁振子各自耦合于独立的热库
+\begin{equation}
+\begin{aligned}
+H_S\equiv{}&\hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^{\dag}c \\
+&+i\hbar\Omega(c^{\dag}e^{-i\omega_{0}t}-ce^{i\omega_{0}t}) \\
+H_{R}\equiv&\sum_{i}\hbar\omega_{i}a_{i}^{\dag}a_{i}+\sum_{j}\hbar\omega_{j}b_{j}^{\dag}b_{j} \\
+H_{SR}\equiv&\sum_{i}g_{c,i}(c^{\dag}a_{i}+a_{i}^{\dag}c)+\sum_{j}g_{m,j}(m^{\dag}b_{j}+b_{j}^{\dag}m)
+\label{HamCMRes}
+\end{aligned}
+\end{equation}
+其中$a(a^{\dag})$，$b(b^{\dag})$分别为光子和谐振子热库的湮灭（产生）算符，$\omega_{i}$，$\omega_{j}$表示它们的频率，光子和谐振子与热库的耦合率分别为$g_{c,i}$，$g_{m,j}$。假设热库处于热平衡的温度为$T$，则其密度算符表示为
+\begin{equation}
+R_{0}=\prod_{i} e^{-\hbar \omega_{i} a_{i}^{\dag}a_{i} / k_{B} T}\left(1-e^{-\hbar \omega_{i} / k_{B} T}\right) \otimes \prod_{j} e^{-\hbar \omega_{j} b_{j}^{\dag}b_{j} / k_{B} T}\left(1-e^{-\hbar \omega_{j} / k_{B} T}\right)
+\label{ThermalState}
+\end{equation}
+其中$k_{B}$表示玻尔兹曼常数，$R_{0}$即为满足玻色--爱因斯坦分布的密度算符。值得注意的是，关于\eqref{HamCMRes}中的$H_{SR}$，这里已经通过旋转波近似略去了粒子数不守衡的项，但是对于有着超强耦合的系统这一近似就不再成立，具体的讨论见相关研究\cite{}。
+
+把哈密顿量\eqref{HamCMRes}对照上一小节\eqref{HsrSpec}的形式表示为
+\begin{equation}
+\begin{gathered}
+s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
+\Gamma_{1}= \sum_{i} g_{c,i} a_{i}^{\dag}, \quad \Gamma_{2}= \sum_{i} g_{c,i} a_{i}, \quad \Gamma_{3}= \sum_{j} g_{m,j} b_{j}^{\dag}, \quad \Gamma_{4}= \sum_{j} g_{m,j} b_{j}
+\end{gathered}
+\end{equation}
+然后\eqref{HsrSpec2}中的算符就变为了
+\begin{equation}
+\begin{aligned}
+&\tilde{s}_{1}(t)=e^{(i / \hbar) H_{S} t} c e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c e^{-i \omega_{0} t} \\
+&\tilde{s}_{2}(t)=e^{(i / \hbar) H_{S} t} c^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c^{\dagger} e^{i \omega_{0} t} \\
+&\tilde{s}_{3}(t)=e^{(i / \hbar) H_{S} t} m e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = m e^{-i \omega_{0} t} \\
+&\tilde{s}_{4}(t)=e^{(i / \hbar) H_{S} t} m^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} =m^{\dagger} e^{i \omega_{0} t}
+\label{interactS}
+\end{aligned}
+\end{equation}
+以及
+\begin{equation}
+\begin{aligned}
+\tilde{\Gamma}_{1}(t) &=\exp \left(i \sum_{n}\omega_{n}a_{n}^{\dag}a_{n} t\right) \sum_{i} g_{c,i} a_{i}^{\dag} \exp \left(-i \sum_{m}\omega_{m}a_{m}^{\dag}a_{m} t\right) =\sum_{i} g_{c,i} a_{i}^{\dag} e^{i \omega_{i} t} \\
+\tilde{\Gamma}_{2}(t) &=\exp \left(i \sum_{n}\omega_{n}a_{n}^{\dag}a_{n} t\right) \sum_{i} g_{c,i} a_{i} \exp \left(-i \sum_{m}\omega_{m}a_{m}^{\dag}a_{m} t\right) =\sum_{i} g_{c,i} a_{i} e^{-i \omega_{i} t} \\
+\tilde{\Gamma}_{3}(t) &=\exp \left(i \sum_{n}\omega_{n}b_{n}^{\dag}b_{n} t\right) \sum_{j} g_{m,j} b_{j}^{\dag} \exp \left(-i \sum_{m}\omega_{m}b_{m}^{\dag}b_{m} t\right) =\sum_{j} g_{m,j} b_{j}^{\dag} e^{i \omega_{j} t} \\
+\tilde{\Gamma}_{4}(t) &=\exp \left(i \sum_{n}\omega_{n}b_{n}^{\dag}b_{n} t\right) \sum_{j} g_{m,j} b_{j} \exp \left(-i \sum_{m}\omega_{m}b_{m}^{\dag}b_{m} t\right) =\sum_{j} g_{m,j} b_{j} e^{-i \omega_{j} t}
+\label{interactGam}
+\end{aligned}
+\end{equation}
+在\eqref{interactS}的推导中我们用到了$H_S$中耦合项与驱动项远远小于光子和谐振子谐振能量的假设，在下一章节的参数选取时我们会知道这在实验上是合理的，而在\eqref{interactGam}的推导中我们则用到了不同模式谐振子算符相互对易的特点。另外还需要注意的是，结合\eqref{ThermalState}与\eqref{interactGam}可以得到$\left\langle\tilde{\Gamma}_{1}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{2}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{3}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{4}(t)\right\rangle_{R_0}=0$，也就是说式\eqref{InitialAssumption}的假设是成立的。
 
 \section{Fokker-Planck方程}
 
