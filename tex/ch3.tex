@@ -5,6 +5,7 @@
 \label{ch3}
 
 \section{主方程}
+上一章中得到的腔磁振子系统的哈密顿量\eqref{Hamiltonian}只是一个理想化的封闭模型，实际中由于需要对腔中光场进行不断的驱动与测量，系统会不可避免地受到外部环境的影响。通常来说，外部环境会转移或是吸收内部系统的能量，从而导致系统的耗散以及退相干。在量子力学中有多种方法可以用来处理这样的开放量子系统，但是由于我们想了解腔磁振子系统中量子态的具体特点，必须要使用既能描述纯态又能描述混态的密度算符，这样一来合适的方法就是这一节所要论述的主方程。
 
 \subsection{Liouville--von Neumann方程的解}
 为了在模型中加入环境的影响，我们可以假设系统$S$和外部环境$R$的耦合具有如下形式的哈密顿量：
@@ -124,7 +125,7 @@ H_{S R}=\hbar \sum_{i} s_{i} \Gamma_{i}
 容易看出这样做的效果就等同于我们把$\tilde{\rho}(t^{\prime})$替换为$\tilde{\rho}(t)$。
 
 \subsection{腔磁振子系统的主方程}
-我们回到腔磁振子系统的哈密顿量，把热环境看作包含各种频率的谐振子的集合，并且认为系统内的光场和磁振子各自耦合于独立的热库
+我们回到腔磁振子系统的哈密顿量\eqref{Hamiltonian}，把热环境看作包含各种频率的谐振子的集合，并且认为系统内的光场和磁振子各自耦合于独立的热库
 \begin{equation}
 \begin{aligned}
 H_S\equiv{}&\hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^{\dag}c \\
@@ -151,10 +152,10 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 然后\eqref{HsrSpec2}中的算符就变为了
 \begin{equation}
 \begin{aligned}
-&\tilde{s}_{1}(t)=e^{(i / \hbar) H_{S} t} c e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c e^{-i \omega_{0} t} \\
-&\tilde{s}_{2}(t)=e^{(i / \hbar) H_{S} t} c^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c^{\dagger} e^{i \omega_{0} t} \\
-&\tilde{s}_{3}(t)=e^{(i / \hbar) H_{S} t} m e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = m e^{-i \omega_{0} t} \\
-&\tilde{s}_{4}(t)=e^{(i / \hbar) H_{S} t} m^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} =m^{\dagger} e^{i \omega_{0} t}
+&\tilde{s}_{1}(t)=e^{(i / \hbar) H_{S} t} c e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c e^{-i \omega_{c} t} \\
+&\tilde{s}_{2}(t)=e^{(i / \hbar) H_{S} t} c^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} c^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = c^{\dagger} e^{i \omega_{c} t} \\
+&\tilde{s}_{3}(t)=e^{(i / \hbar) H_{S} t} m e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} = m e^{-i \omega_{m} t} \\
+&\tilde{s}_{4}(t)=e^{(i / \hbar) H_{S} t} m^{\dagger} e^{-(i / \hbar) H_{S} t} \approx e^{i \omega_{c}c^{\dag}c t} e^{i \omega_{m}m^{\dag}m t} m^{\dagger} e^{-i \omega_{c}c^{\dag}c t} e^{-i \omega_{m}m^{\dag}m t} =m^{\dagger} e^{i \omega_{m} t}
 \label{interactS}
 \end{aligned}
 \end{equation}
@@ -170,7 +171,359 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 \end{equation}
 在\eqref{interactS}的推导中我们用到了$H_S$中耦合项与驱动项远远小于光子和谐振子谐振能量的假设，在下一章节的参数选取时我们会知道这在实验上是合理的，而在\eqref{interactGam}的推导中我们则用到了不同模式谐振子算符相互对易的特点。另外还需要注意的是，结合\eqref{ThermalState}与\eqref{interactGam}可以得到$\left\langle\tilde{\Gamma}_{1}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{2}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{3}(t)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{4}(t)\right\rangle_{R_0}=0$，也就是说式\eqref{InitialAssumption}的假设是成立的。
 
-\section{Fokker-Planck方程}
+现在让我们来继续推导方程\eqref{MasterEqBorn2}，由于求和指标需要遍历$i=1,2,3,4$以及$j=1,2,3,4$，故需要计算64项的积分值，好在其中一半以上的项都是能拿掉的，容易计算出
+\begin{align}
+	\left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0} &=\left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0}=0 
+	\label{zeroCorrelations} \\
+	\left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0} &=\left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0}=0
+\end{align}
+以及
+\begin{equation}
+\left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0} =\left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0}=\left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0}=0
+\label{zeroCorrelations2}
+\end{equation}
+上面的关联函数\eqref{zeroCorrelations}--\eqref{zeroCorrelations2}以及其厄米共轭的值都是零，这样就大大简化了方程的形式，余下不为零的关联函数为
+\begin{align}
+\left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{i, k} g_{c,i} g_{c,k} e^{i \omega_{i} t} e^{-i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} a_{i}^{\dag} a_{k}\right) \notag \\
+&=\sum_{i} g_{c,i}^{2} e^{i \omega_{i}\left(t-t^{\prime}\right)} \overline{n}_c\left(\omega_{i}, T\right) \label{Correlations1} \\
+\left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{i, k} g_{c,i} g_{c,k} e^{-i \omega_{i} t} e^{i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} a_{i} a_{k}^{\dag}\right) \notag \\
+&=\sum_{i} g_{c,i}^{2} e^{-i \omega_{i}\left(t-t^{\prime}\right)} \left[\overline{n}_c \left(\omega_{i}, T\right)+1\right] \\
+\left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{j, k} g_{m,j} g_{m,k} e^{i \omega_{j} t} e^{-i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} b_{j}^{\dagger} b_{k}\right) \notag \\
+&=\sum_{j} g_{m,j}^{2} e^{i \omega_{j}\left(t-t^{\prime}\right)} \overline{n}_m\left(\omega_{j}, T\right) \\
+\left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{j, k} g_{m,j} g_{m,k} e^{-i \omega_{j} t} e^{i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} b_{j} b_{k}^{\dagger}\right) \notag \\
+&=\sum_{j} g_{m,j}^{2} e^{-i \omega_{j}\left(t-t^{\prime}\right)}\left[\overline{n}_m\left(\omega_{j}, T\right)+1\right] \label{Correlations4}
+\end{align}
+其中
+\begin{equation}
+\begin{aligned}
+\overline{n}_c\left(\omega_{i}, T\right) &=\operatorname{tr}_{R}\left(R_{0} a_{i}^{\dagger} a_{i}\right)=\frac{e^{-\hbar \omega_{i} / k_{B} T}}{1-e^{-\hbar \omega_{i} / k_{B} T}}
+\\
+\overline{n}_m\left(\omega_{j}, T\right) &=\operatorname{tr}_{R}\left(R_{0} b_{j}^{\dagger} b_{j}\right)=\frac{e^{-\hbar \omega_{j} / k_{B} T}}{1-e^{-\hbar \omega_{j} / k_{B} T}}
+\end{aligned}
+\end{equation}
+分别为热平衡下光子和磁振子对应温度$T$与模式$\omega_{i}$，$\omega_{j}$下的平均光子数和磁振子数。
 
+非零关联函数\eqref{Correlations1}--\eqref{Correlations4}中需要对所有模式的热库求和，我们用$G_{a(b)}(\omega)$表示光子（磁振子）所处热库的态密度，$G_{a(b)}(\omega) d\omega$表示$\omega$到$\omega+d\omega$频率间隔内的光子（磁振子）数，这样就可以将求和变为积分。在做了变量替换$\tau = t-t^{\prime}$后，Born近似的主方程可以化简为
+\begin{equation}
+\begin{aligned}
+\dot{\tilde{\rho}}={}&-\int_{0}^{t} d \tau \biggl\{\left[c c^{\dagger} \tilde{\rho}(t-\tau)-c^{\dagger} \tilde{\rho}(t-\tau) c\right] e^{-i \omega_{c} \tau}\left\langle\tilde{\Gamma}_1(t) \tilde{\Gamma}_2(t-\tau)\right\rangle_{R_0}+\text { h.c. }\\
+&+\left[c^{\dagger} c \tilde{\rho}(t-\tau)-c \tilde{\rho}(t-\tau) c^{\dagger}\right] e^{i \omega_{c} \tau}\left\langle\tilde{\Gamma}_2(t) \tilde{\Gamma}_1(t-\tau)\right\rangle_{R_0}+\text { h.c. } \\
+&+\left[m m^{\dagger} \tilde{\rho}(t-\tau)-m^{\dagger} \tilde{\rho}(t-\tau) m\right] e^{-i \omega_{m} \tau}\left\langle\tilde{\Gamma}_3(t) \tilde{\Gamma}_4(t-\tau)\right\rangle_{R_0}+\text { h.c. }\\
+&+\left[m^{\dagger} m \tilde{\rho}(t-\tau)-m \tilde{\rho}(t-\tau) m^{\dagger}\right] e^{i \omega_{m} \tau}\left\langle\tilde{\Gamma}_4(t) \tilde{\Gamma}_3(t-\tau)\right\rangle_{R_0}+\text { h.c. } \biggr\}
+\label{MasterEqBorn3}
+\end{aligned}
+\end{equation}
+%书中的方程倒数第二项算符的顺序无误
+关联函数也化为了
+\begin{align}
+\left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0} &=\int_{0}^{\infty} d \omega e^{i \omega \tau} G_a(\omega) g_{c}^{2}(\omega) \overline{n}_c\left(\omega, T\right) \label{} \\
+\left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0} &=\int_{0}^{\infty} d \omega e^{-i \omega \tau} G_a(\omega) g_{c}^{2}(\omega) \left[\overline{n}_c \left(\omega, T\right)+1\right] \\
+\left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0} &=\int_{0}^{\infty} d \omega e^{i \omega \tau} G_b(\omega) g_{m,j}^{2} \overline{n}_m\left(\omega, T\right) \\
+\left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0} &=\int_{0}^{\infty} d \omega e^{-i \omega \tau} G_b(\omega) g_{m,j}^{2} \left[\overline{n}_m\left(\omega, T\right)+1\right] \label{}
+\end{align}
+%书中这部分的推导有提到积分中的高频平均掉了低频，是因为各个量的相乘关系导致积分时低频的包络都成了0。旋转波近似中有一个高频被平均掉的说法，是因为高频和低频的相加关系。
+方程\eqref{MasterEqBorn3}的积分中存在着三种时间尺度，其中热库的关联函数有着极窄的线型\cite{}，其有效关联时间$t_R \sim \hbar/k_B T \approx 10^{-12}s$。而在腔磁振子系统中，系统$\tilde{\rho} (t-\tau)$能发生明显变化的时间取决于耦合率以及关联函数，在实验参数中$t_S \sim 10^{-7}s$。振荡项$e^{-i \omega_{c(m)} \tau}$在微波频域内的时间尺度$t_0 \sim 10^{-10}s$。因此在$t_S$时间尺度内对 $\tau$ 积分时$\tilde{\rho}$可以看作是不变的，换句话说，我们可以直接将$\tilde{\rho} (t-\tau)$替换为$\tilde{\rho} (t)$，也就是使用Markov近似将$\tilde{\rho}$从积分中提出来，剩余的项可以积分为
+\begin{equation}
+\begin{aligned}
+&\int_{0}^{t} d \tau \int_{0}^{\infty} d \omega e^{-i\left(\omega-\omega_{c}\right) \tau} G_a(\omega) g_{c}^{2}(\omega) \\
+={}&\pi G_a(\omega_c) g_{c}^{2}(\omega_c)+i P \int_{0}^{\infty} d \omega \frac{G_a(\omega) g_{c}^{2}(\omega)}{\omega_{c}-\omega} \\
+&\int_{0}^{t} d \tau \int_{0}^{\infty} d \omega e^{-i\left(\omega-\omega_{c}\right) \tau} G_a(\omega) g_{c}^{2}(\omega) \overline{n}_c(\omega, T) \\
+={}&\pi G_a(\omega_c) g_{c}^{2}(\omega_c)\overline{n}_c(\omega_c)+i P \int_{0}^{\infty} d \omega \frac{G_a(\omega) g_{c}^{2}(\omega)}{\omega_{c}-\omega} \overline{n}_c(\omega, T) \\
+&\int_{0}^{t} d \tau \int_{0}^{\infty} d \omega e^{-i\left(\omega-\omega_{m}\right) \tau} G_b(\omega) g_{m}^{2}(\omega) \\
+={}&\pi G_b(\omega_m) g_{m}^{2}(\omega_m)+i P \int_{0}^{\infty} d \omega \frac{G_b(\omega) g_{m}^{2}(\omega)}{\omega_{m}-\omega} \\
+&\int_{0}^{t} d \tau \int_{0}^{\infty} d \omega e^{-i\left(\omega-\omega_{m}\right) \tau} G_b(\omega) g_{m}^{2}(\omega) \overline{n}_m(\omega, T) \\
+={}&\pi G_b(\omega_m) g_{m}^{2}(\omega_m)\overline{n}_m(\omega_m)+i P \int_{0}^{\infty} d \omega \frac{G_b(\omega) g_{m}^{2}(\omega)}{\omega_{m}-\omega} \overline{n}_m(\omega, T)
+\label{IntergralCorrelations}
+\end{aligned}
+\end{equation}
+上面的积分中我们用到了如下的关系式
+\begin{equation}
+\lim _{t \rightarrow \infty} \int_{0}^{t} d \tau e^{-i\left(\omega-\omega^{\prime}\right) \tau}=\pi \delta\left(\omega-\omega^{\prime}\right)+i \frac{P}{\omega^{\prime}-\omega}
+\end{equation}
+其中P表示柯西积分主值。
+
+我们定义如下符号
+\begin{align}
+\Delta_c \equiv P \int_{0}^{\infty} d \omega \frac{G_a(\omega) g_{c}^{2}(\omega)}{\omega_{c}-\omega},
+&\quad \Delta_m \equiv P \int_{0}^{\infty} d \omega \frac{G_b(\omega) g_{m}^{2}(\omega)}{\omega_{m}-\omega} \\
+\kappa_c \equiv 2 \pi G_a\left(\omega_{c}\right)g_{c}^{2}(\omega_c),
+&\quad \kappa_m \equiv 2 \pi G_b\left(\omega_{m}\right)g_{m}^{2}(\omega_m) \\
+\overline{n}_c \equiv \overline{n}_c\left(\omega_{c}, T\right),
+&\quad \overline{n}_m \equiv \overline{n}_m\left(\omega_{m}, T\right)
+\end{align}
+结合\eqref{MasterEqBorn3}--\eqref{IntergralCorrelations}后，我们就得到了Born--Markov近似下腔磁振子系统的主方程
+\begin{equation}
+\begin{aligned}
+\dot{\tilde{\rho}}={}&-i \Delta_c\left[c^{\dagger} c, \tilde{\rho}\right]+\kappa_c\left(2 c \tilde{\rho} c^{\dagger}-c^{\dagger} c \tilde{\rho}-\tilde{\rho} c^{\dagger} c\right) \\
+&+2 \kappa_c \overline{n}_c\left(c \tilde{\rho} c^{\dagger}+c^{\dagger} \tilde{\rho} c-c^{\dagger} c \tilde{\rho}-\tilde{\rho} c c^{\dagger}\right) \\
+&-i \Delta_m\left[m^{\dagger} m, \tilde{\rho}\right]+\kappa_m\left(2 m \tilde{\rho} m^{\dagger}-m^{\dagger} m \tilde{\rho}-\tilde{\rho} m^{\dagger} m\right) \\
+&+2 \kappa_m \overline{n}_m\left(m \tilde{\rho} m^{\dagger}+m^{\dagger} \tilde{\rho} m-m^{\dagger} m \tilde{\rho}-\tilde{\rho} m m^{\dagger}\right)
+\end{aligned}
+\end{equation}
+这里的$\tilde{\rho}$还依旧是相互作用绘景下的密度算符，通过公式\eqref{InitialAssumption}可以得到
+\begin{equation}
+\dot{\rho}=\frac{1}{i \hbar}\left[H_{S}, \rho\right]+e^{-(i / \hbar) H_{S} t} \dot{\tilde{\rho}} e^{(i / \hbar) H_{S} t}
+\end{equation}
+借助上式将$\tilde{\rho}$变换为$\rho$之后，我们就得到了所需的薛定谔绘景下的主方程
+\begin{equation}
+\begin{aligned}
+\dot{\rho}={}&\frac{1}{i \hbar}\left[H_{S}, \rho\right]-i \Delta_c\left[c^{\dagger} c, \rho\right]-i \Delta_m\left[m^{\dagger} m, \rho\right] \\
+&+\kappa_c\left(2 c \rho c^{\dagger}-c^{\dagger} c \rho-\rho c^{\dagger} c\right) \\
+&+2 \kappa_c \overline{n}_c\left(c \rho c^{\dagger}+c^{\dagger} \rho c-c^{\dagger} c \rho-\rho c c^{\dagger}\right) \\
+&+\kappa_m\left(2 m \rho m^{\dagger}-m^{\dagger} m \rho-\rho m^{\dagger} m\right) \\
+&+2 \kappa_m \overline{n}_m\left(m \rho m^{\dagger}+m^{\dagger} \rho m-m^{\dagger} m \rho-\rho m m^{\dagger}\right)
+\end{aligned}
+\end{equation}
+上式中的第二项与第三项的作用相当于给系统中的光子和磁振子的共振频率产生一个平移，实际上实验中不会对平移前后的频率做出区分，为了便于讨论，后面的书写中我们也不区分频移。把$\Delta_c$，$\Delta_m$归到$H_S$里，并且采用Lindblad形式书写主方程为
+\begin{equation}
+\dot{\rho}=\frac{1}{i\hbar}[H_S,\rho]+\mathcal{L}\{\rho\}
+\label{MasterEquation}
+\end{equation}
+其中$\mathcal{L}$为Liouvillian超算符，定义为$\mathcal{L}\{\rho\}=\sum\limits_{o=c,m}[\kappa_{o}(1 +\overline{n}_{o})(2o\rho o^{\dag}-\{o^{\dag}o,\rho\}) +\kappa_{o} \overline{n}_{o} (2o^{\dag}\rho o-\{oo^{\dag},\rho\})]$。
+
+\section{Fokker-Planck方程}
+主方程\eqref{MasterEquation}是由量子力学算符构成的方程，多数情况下直接求解$\rho$会非常困难，即使是数值求解也需要选择合适的一组基来展开才能得到比较好的结果。我们这一节要做的是借助量子力学的相干态表象把这一关于算符的方程转换为关于经典复数变量的微积分方程。
+
+\subsection{Glauber-Sudarshan $P$表象}
+首先来看一下相干态$|\alpha\rangle$和$|\beta\rangle$的定义
+\begin{equation}
+\begin{aligned}
+c|\alpha\rangle=\alpha|\alpha\rangle,& \quad\langle\alpha| c^{\dagger}=(c|\alpha\rangle)^{\dagger}=\alpha^{*}\langle\alpha| \\
+m|\beta\rangle=\beta|\beta\rangle,& \quad\langle\beta| m^{\dagger}=(m|\beta\rangle)^{\dagger}=\beta^{*}\langle\beta|
+\end{aligned}
+\end{equation}
+即相干态是湮灭算符的本征态。
+
+由于相干态具有超完备性
+\begin{equation}
+\frac{1}{\pi} \int d^{2} \alpha|\alpha\rangle\langle\alpha|=1, \quad
+\frac{1}{\pi} \int d^{2} \beta|\beta\rangle\langle\beta|=1
+\end{equation}
+所以我们可以在相干态的基下对密度算符$\rho$进行展开
+\begin{equation}
+\rho=\int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*},\beta,\beta^{*},t)|\alpha,\beta\rangle \langle \alpha,\beta| \label{Pfun} 
+\end{equation}
+上式定义中的表象即为 Glauber-Sudarshan $P$表象，简称为$P$表象，其中的积分定义在整个复平面上，也就是$d^{2} \alpha d^{2} \beta=d(\operatorname{Re}\{\alpha\}) d(\operatorname{Im}\{\alpha\}) d(\operatorname{Re}\{\beta\}) d(\operatorname{Im}\{\beta\})$。$P$表象中的函数$P(\alpha,\alpha^{*},\beta,\beta^{*},t)$是实数，这一点由密度算符$\rho$的厄米性所保证，同时具有如下性质
+\begin{equation}
+\begin{aligned}
+\int d^{2} \alpha d^{2}\beta P &=\int d^{2} \alpha d^{2}\beta \langle\alpha,\beta \mid \alpha,\beta \rangle P \\
+&=\operatorname{tr}\left(\int d^{2} \alpha d^{2}\beta |\alpha,\beta\rangle\langle\alpha,\beta| P\right) \\
+&=\operatorname{tr}(\rho) \\
+&=1
+\end{aligned}
+\end{equation}
+由此我们说$P$函数具有归一化的概率分布的意义，但需要注意的是某些量子态的$P$函数可以是负的，所以我们称之为准概率分布。用准概率分布$P$可以表示任一算符$O$的期望值为
+\begin{equation}
+\langle{O}\rangle=\int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*},\beta,\beta^{*},t)\langle \alpha,\beta|O|\alpha,\beta\rangle
+\end{equation}
+使用这一方法可以很方便地计算正则序（normal order）算符的期望值，例如$\langle c^{\dagger}c \rangle = \int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*};\beta,\beta^{*};t) \langle \alpha,\beta|c^{\dagger}c|\alpha,\beta\rangle = \int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*};\beta,\beta^{*};t)\alpha^{*}\alpha$。为方便后面的推导，我们使用如下记号
+\begin{equation}
+\overline{\alpha^{*}\alpha} = \int d^{2}\alpha d^{2}\beta P\alpha^{*}\alpha = \langle c^{\dagger}c \rangle
+\end{equation}
+
+此外，关于$P$表象还值得一提的是，Glauber-Sudarshan $P$表象\eqref{Pfun}只是$P$表象的一种形式，原则上可以使用不同的概率分布函数$P$来定义$P$表象的积分\cite{}。其它的$P$表象如复数$P$表象（complex $P$ representation），正定$P$表象（positive $P$ representation）等在处理非线性系统时很有帮助，但是对于我们这里的系统 \eqref{Hamiltonian}，使用\eqref{Pfun}就足够了。
+
+\subsection{腔磁振子系统的Fokker-Planck方程}
+现在我们将系统的哈密顿量\eqref{Hamiltonian}以及$P$表象下的密度算符\eqref{Pfun}代入到主方程\eqref{MasterEquation}中
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha d^{2}\beta &\frac{\partial P}{\partial t} |\alpha,\beta\rangle \langle \alpha,\beta| \\
+= {} &\int d^{2}\alpha d^{2}\beta P \times 
+\{ 
+-i\omega_{c} \left(c^{\dag}c|\alpha,\beta\rangle \langle \alpha,\beta| - |\alpha,\beta\rangle \langle \alpha,\beta|c^{\dag}c\right) \\
+&-i\omega_{m} \left(m^{\dag}m|\alpha,\beta\rangle \langle \alpha,\beta| - |\alpha,\beta\rangle \langle \alpha,\beta|m^{\dag}m\right) \\
+&-g \left(c^{\dag}m|\alpha,\beta\rangle \langle \alpha,\beta| - |\alpha,\beta\rangle \langle \alpha,\beta|c^{\dag}m\right) \\
+&-g \left(m^{\dag}c|\alpha,\beta\rangle \langle \alpha,\beta| - |\alpha,\beta\rangle \langle \alpha,\beta|m^{\dag}c\right) \\
+&+\Omega (c^{\dag}e^{-i\omega_{0}t}|\alpha,\beta\rangle \langle \alpha,\beta|-ce^{i\omega_{0}t}|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&-|\alpha,\beta\rangle \langle \alpha,\beta|c^{\dag}e^{-i\omega_{0}t}+|\alpha,\beta\rangle \langle \alpha,\beta|ce^{i\omega_{0}t}) \\
+&-\kappa_{c}(1+\overline{n}_{c})(c^{\dag}c|\alpha,\beta\rangle \langle \alpha,\beta|-2c|\alpha,\beta\rangle \langle \alpha,\beta| c^{\dag}+|\alpha,\beta\rangle \langle \alpha,\beta| c^{\dag}c) \\
+&-\kappa_{c}\overline{n}_{c}(|\alpha,\beta\rangle \langle \alpha,\beta| cc^{\dag}-2c^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta| c+cc^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta|) \\
+&-\kappa_{m}(1+\overline{n}_{m})(m^{\dag}m|\alpha,\beta\rangle \langle \alpha,\beta|-2m|\alpha,\beta\rangle \langle \alpha,\beta| m^{\dag}+|\alpha,\beta\rangle \langle \alpha,\beta| m^{\dag}m) \\
+&-\kappa_{m}\overline{n}_{m}(|\alpha,\beta\rangle \langle \alpha,\beta| mm^{\dag}-2m^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta| m+mm^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta|)
+\}
+\label{master2fp}
+\end{aligned}
+\end{equation}
+接下来推导的关键是把上式中作用在相干态上的算符替换为复变量微分算子，我们需要借助如下的关系式
+\begin{equation}
+\begin{aligned}
+c|\alpha,\beta\rangle\langle \alpha,\beta|=\alpha|\alpha,\beta\rangle\langle \alpha,\beta|, &\quad |\alpha,\beta\rangle \langle\alpha,\beta| c^{\dag}=|\alpha,\beta\rangle\langle \alpha,\beta|\alpha^{*} \\
+m|\alpha,\beta\rangle \langle\alpha,\beta|=\beta|\alpha,\beta\rangle\langle \alpha,\beta|, &\quad
+|\alpha,\beta\rangle\langle \alpha,\beta|m^{\dag}=|\alpha,\beta\rangle\langle \alpha,\beta|\beta^{*} \\
+c^{\dag}|\alpha,\beta\rangle\langle \alpha,\beta|=(\frac{\partial}{\partial\alpha}+\alpha^{*})|\alpha,\beta\rangle\langle \alpha,\beta|, &\quad
+|\alpha,\beta\rangle\langle \alpha,\beta|c=(\frac{\partial}{\partial\alpha^{*}}+\alpha)|\alpha,\beta\rangle\langle \alpha,\beta| \\
+m^{\dag}|\alpha,\beta\rangle\langle \alpha,\beta|=(\frac{\partial}{\partial\beta}+\beta^{*})|\alpha,\beta\rangle\langle \alpha,\beta|, &\quad
+|\alpha,\beta\rangle\langle \alpha,\beta|m=(\frac{\partial}{\partial\beta^{*}}+\beta)|\alpha,\beta\rangle\langle \alpha,\beta|
+\end{aligned}
+\end{equation}
+由此方程\eqref{master2fp}右侧的各项可以化简为
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha & d^{2}\beta Pc^{\dag}c|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&= \int d^{2}\alpha d^{2}\beta P(|\alpha|^{2}+\alpha\frac{\partial}{\partial\alpha})|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&= \int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|+\alpha P(\frac{\partial}{\partial\alpha}|\alpha,\beta\rangle \langle \alpha,\beta|)\right) \\
+&= \int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|+(\frac{\partial}{\partial\alpha}\alpha P|\alpha,\beta\rangle \langle \alpha,\beta|)-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|\right) \\
+&= \int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|\right)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha d^{2}\beta & Pcc^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&= \int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|+|\alpha,\beta\rangle \langle \alpha,\beta|\right)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha d^{2}\beta & P|\alpha,\beta\rangle \langle \alpha,\beta|c^{\dag}c \\
+&= \int d^{2}\alpha d^{2}\beta P(|\alpha|^{2}+\alpha^{*}\frac{\partial}{\partial\alpha^{*}})|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&= \int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha^{*}}\alpha^{*} P)|\alpha,\beta\rangle \langle \alpha,\beta|\right)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha d^{2}\beta & P|\alpha,\beta\rangle \langle \alpha,\beta|cc^{\dag} \\
+&=\int d^{2}\alpha d^{2}\beta \left(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha^{*}}\alpha^{*} P)|\alpha,\beta\rangle \langle \alpha,\beta|+|\alpha,\beta\rangle \langle \alpha,\beta|\right)
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha d^{2}\beta Pc|\alpha,\beta\rangle \langle \alpha,\beta|c^{\dag} = \int d^{2}\alpha d^{2}\beta |\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|
+\end{aligned}
+\end{equation}
+\begin{equation}
+\begin{aligned}
+\int d^{2}\alpha & d^{2}\beta Pc^{\dag}|\alpha,\beta\rangle \langle \alpha,\beta|c \\
+&= \int d^{2}\alpha d^{2}\beta P(|\alpha|^{2}+\alpha\frac{\partial}{\partial\alpha}+\alpha^{*}\frac{\partial}{\partial\alpha^{*}}+\frac{\partial^{2}}{\partial\alpha\partial\alpha^{*}}+1)|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&= \int d^{2}\alpha d^{2}\beta \Bigl(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha^{*}}\alpha^{*} P)|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&+|\alpha,\beta\rangle \langle \alpha,\beta|+\bigl(\frac{\partial}{\partial\alpha}(P\frac{\partial}{\partial\alpha^{*}}|\alpha,\beta\rangle \langle \alpha,\beta|)\bigr)-(\frac{\partial P}{\partial\alpha}\frac{\partial}{\partial\alpha^{*}}|\alpha,\beta\rangle \langle \alpha,\beta|)\Bigr) \\
+&= \int d^{2}\alpha d^{2}\beta \Bigl(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha^{*}}\alpha^{*} P)|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&+|\alpha,\beta\rangle \langle \alpha,\beta|+\bigl(\frac{\partial}{\partial\alpha}(\frac{\partial}{\partial\alpha^{*}}P|\alpha,\beta\rangle \langle \alpha,\beta|-\frac{\partial P}{\partial\alpha^{*}}|\alpha,\beta\rangle \langle \alpha,\beta|)\bigr) \\
+&-\bigl(\frac{\partial}{\partial\alpha^{*}}\frac{\partial P}{\partial\alpha}|\alpha,\beta\rangle \langle \alpha,\beta|-\frac{\partial^{2}P}{\partial\alpha\partial\alpha^{*}}|\alpha,\beta\rangle \langle \alpha,\beta|\bigr)\Bigr) \\
+&= \int d^{2}\alpha d^{2}\beta \Bigl(|\alpha|^{2}P|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha}\alpha P)|\alpha,\beta\rangle \langle \alpha,\beta|-(\frac{\partial}{\partial\alpha^{*}}\alpha^{*} P)|\alpha,\beta\rangle \langle \alpha,\beta| \\
+&+|\alpha,\beta\rangle \langle \alpha,\beta|+\frac{\partial^{2}P}{\partial\alpha\partial\alpha^{*}}|\alpha,\beta\rangle \langle \alpha,\beta|)\Bigr)
+\end{aligned}
+\end{equation}
+在以上积分的推导中我们假设了$P(\alpha,\alpha^{*},\beta,\beta^{*},t)$在无穷远处衰减的充分快，使得我们可以去掉那些边界项的积分。把各项积分带回到\eqref{master2fp}中后，我们就将方程里的相干态从算符的作用下分离了出来，对照方程两端的被积函数我们就得到了腔磁振子系统的Fokker-Planck方程
+\begin{equation}
+\begin{aligned}
+\dot{P} &=\frac{\partial}{\partial \alpha}\left[\left(i \omega_{c} \alpha+i g \beta-\Omega e^{-i \omega_{0} t}+\kappa_{c} \alpha\right) P\right] \\
+&+\frac{\partial}{\partial \alpha^{*}}\left[\left(-i \omega_{c} \alpha^{*}-i g \beta^{*}-\Omega e^{i \omega_{0} t}+\kappa_{c} \alpha^{*}\right) P\right]+\frac{\partial^{2}}{\partial \alpha \partial \alpha^{*}}\left(2 \kappa_{c} \bar{n}_{c} P\right) \\
+&+\frac{\partial}{\partial \beta}\left[\left(i \omega_{m} \beta+i g \alpha+\kappa_{m} \beta\right) P\right] \\
+&+\frac{\partial}{\partial \beta^{*}}\left[\left(-i \omega_{m} \beta^{*}-i g \alpha^{*}+\kappa_{m} \beta^{*}\right) P\right]+\frac{\partial^{2}}{\partial \beta \partial \beta^{*}}\left(2 \kappa_{m} \bar{n}_{m} P\right)
+\label{Fokker-Planck}
+\end{aligned}
+\end{equation}
+上面的方程和前面得到的主方程\eqref{MasterEquation}是完全等价的，但是在非线性系统中可能会有些差别，具体参见相关研究\cite{}。另外，可以看出Fokker-Planck方程\eqref{Fokker-Planck}是关于$P$函数的含时二阶偏微分方程，我们可以通过假设长时间演化后的稳态形式去掉时间变量来得到系统的稳态解，但是还有另外一种数值方法来得到方程的含时解，那就是随机微分方程。
 
 \section{随机微分方程}
+随机微分方程是应用数学领域中非常重要的一类方程，在金融学、电路滤波问题、优化问题等方面都有着广泛的应用。随机微分方程在数学上有着一套严格的定义和证明，详细可参考相关书籍\cite{}，我们这里着重理解概念以及在物理系统中的使用。
+
+\subsection{随机过程与It\^o积分}
+我们先考虑一组随机变量序列$X_{1}, X_{2}, \ldots, X_{n}, \ldots$，假如它们对应于一组时刻序列$t_{1}<t_{2}<\cdots<t_{n}<\cdots$，我们就称这一族时间依赖的随机变量$\{X_{t}\}$为一个随机过程。物理学中有一个经典的随机过程，就是布朗运动。我们知道由于随机涨落力的影响，悬浮于液体中的花粉会表现出无规则的运动，即使花粉保持同样的初始条件每次的运动轨迹也不会完全重合。但是当大量花粉从相同的初始状态运动时，每一时刻的花粉位置就表现出统计上的分布规律，也就是一个随机过程。
+
+有了随机过程的概念，我们可以很容易想到随机过程可以有着自己的演化规律，而用来描述这一规律的方程就是随机微分方程。下面来看一个典型的带随机项的方程
+\begin{equation}
+\dot{X_t}=A(t,X_t)+B(t,X_t)\xi_t
+\label{StochasticEq}
+\end{equation}
+其中的$A$和$B$都是随机变量$X$的解析函数，$\xi_t$是随机的噪声项，每个时刻的值都是随机数且满足一定的随机分布。出于实际上的考虑，比如要求$\xi_t$各个时刻相互独立且一定时间内的联合分布与时间无关等等，数学上并不能直接把$\xi_t$看作是一个“合理”的随机过程。通常把$\xi_t$定义为
+\begin{equation}
+\xi_t \cdot dt=d W_t
+\end{equation}
+这里的$W_t$是一个随机过程，也被称为Wiener过程，在$\Delta t$的时间间隔内$\Delta W_t$是一个服从均值为0，方差为 $\Delta t$ 的高斯分布的随机变量。借助Wiener过程就可以把方程\eqref{StochasticEq}写为一般的随机微分方程的形式
+\begin{equation}
+d X_t=A(t,X_t) dt + B(t,X_t) d W_t
+\label{StochasticDiff}
+\end{equation}
+有了微分方程，自然也有相应的积分
+\begin{equation}
+X_t=X_0 + \int_{0}^{t} A(s,X_s) ds + \int_{0}^{t} B(s,X_s) d W_s
+\end{equation}
+但是这里的积分是随机变量的积分，尤其是上式中的第二个积分项有着与确定变量积分不同的定义与规则。
+
+考虑如下形式的随机变量积分
+\begin{equation}
+\int_{t_{0}}^{t} F_{t^{\prime}} d W_{t^{\prime}}
+\label{StochasticInt}
+\end{equation}
+其中$F_{t}$表示一个任意的随机过程。类似于经典积分定义为黎曼和的极限那样，可以用同样的方式定义随机变量的积分。我们把积分限$[t_0,t]$做$i$等份的均匀分割，每个子间隔的长度为$\Delta t=\left(t-t_{0}\right) / i$，并将端点的时刻表示为$t_{k} \equiv t_{0}+k \Delta t,~ k=0, \ldots, i$。子间隔内的时刻可以表示为
+\begin{equation}
+\tau_{k} \equiv t_{k}+\alpha \Delta t
+\end{equation}
+其中$\alpha$是0到1之间的数。定义\eqref{StochasticInt}的随机积分为
+\begin{equation}
+\int_{t_{0}}^{t} F_{t^{\prime}} d W_{t^{\prime}} \equiv \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} F_{\tau_{k}}\left(W_{t_{k+1}}-W_{t_{k}}\right)
+\end{equation}
+在经典的积分中黎曼和的极限与$\alpha$的选取无关，但是在上述积分中不行，数学上可以证明Wiener过程几乎必然地处处不可微，随机积分的值依赖于$\alpha$。一个好的选择是取$\tau_{k}$为子间隔的左端点，也就是把$\alpha$设置为0，这样选取的积分被称为It\^o积分，即
+\begin{equation}
+\int_{t_{0}}^{t} F_{t^{\prime}} d W_{t^{\prime}} \equiv \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} F_{t_{k}}\left(W_{t_{k+1}}-W_{t_{k}}\right)
+\label{ItoIntegral}
+\end{equation}
+
+\subsection{随机微分方程的数值模拟算法}
+正如前文所述，随机微分方程描述了一个随机过程，也就是每个时刻的随机变量。而随机变量是满足着一定的统计分布的，对于连续型随机变量需要用概率密度函数来刻画它的特征。那么很自然的，随机微分方程的背后必然有一个等价的关于概率密度函数的方程，数学上称之为Kolmogorov前向方程，在物理里面其实就是Fokker-Planck方程。作为例子，随机微分方程\eqref{StochasticDiff}与Fokker-Planck方程的对应为
+\begin{equation}
+\frac{\partial P\left(t,X \mid 0,X_{0}\right)}{\partial t} = \left(-\frac{\partial}{\partial X} A+\frac{1}{2} \frac{\partial^{2}}{\partial X^2} BB\right) P\left(t,X \mid 0,X_{0}\right)
+\end{equation}
+上式中的$P\left(X, t \mid X_{0}, 0\right)$表示条件概率密度函数，微分算子全都是满足确定变量微分规则的经典微分。反过来我们也可以写出Fokker-Planck方程\eqref{Fokker-Planck}所对应的It\^o随机微分方程组
+\begin{align}
+d{{\alpha}}&=(-i\omega_{c}{\alpha}-ig{\beta}+\Omega e^{-i\omega_{0}t}-\kappa_{c}{\alpha})dt+\sqrt{\kappa_c\overline{n}_{c}}(dW_1+idW_2) \label{sdes1} \\
+d{{\alpha^{*}}}&=(i\omega_{c}{\alpha^{*}}+ig{\beta^{*}}+\Omega e^{i\omega_{0}t}-\kappa_{c}{\alpha^{*}})dt+\sqrt{\kappa_c\overline{n}_{c}}(dW_1-idW_2) \\
+d{{\beta}}&=(-i\omega_{m}{\beta}-ig{\alpha}-\kappa_{m}{\beta})dt+\sqrt{\kappa_m\overline{n}_{m}}(dW_3+idW_4) \\
+d{{\beta^{*}}}&=(i\omega_{m}{\beta^{*}}+ig{\alpha^{*}}-\kappa_{m}{\beta^{*}})dt+\sqrt{\kappa_m\overline{n}_{m}}(dW_3-idW_4) \label{sdes4}
+\end{align}
+其中$dW_i~(i=1,2,3,4)$是互相独立的Wiener过程。
+
+随机微分方程不像通常的微分方程那样拥有确定的时间演化，我们可以通过数值模拟的方法得到每次演化的轨迹，尽管每次的轨迹都不尽相同，但是当模拟的轨迹足够多的时候，轨迹的平均以及高阶矩却会趋向于平滑，这也正是我们想要的平均粒子数和高阶关联的信息。在用算法模拟随机微分方程之前，我们可以先把方程组\eqref{sdes1}--\eqref{sdes4}变换到旋转坐标系下，也就是把随机变量写作$\alpha=\tilde{\alpha}(t) e^{-i\omega_{0}t}, \beta=\tilde{\beta}(t) e^{-i\omega_{0}t}$，这有利于我们去掉系统中高速震荡的影响从而加速后面的模拟，变换后的随机微分方程组写作
+\begin{align}
+d{\tilde{\alpha}}&=\big(-i(\omega_{c}-\omega_{0})\tilde{\alpha}-ig\tilde{\beta}+\Omega -\kappa_{c}\tilde{\alpha}\big)dt+\sqrt{\kappa_c\overline{n}_{c}}(d\tilde{W}_1+id\tilde{W}_2) \label{RotateSDEs1} \\
+d{\tilde{\alpha}^{*}}&=\big(i(\omega_{c}-\omega_{0})\tilde{\alpha}^{*}+ig\tilde{\beta}^{*}+\Omega -\kappa_{c}\tilde{\alpha}^{*}\big)dt+\sqrt{\kappa_c\overline{n}_{c}}(d\tilde{W}_1-id\tilde{W}_2) \\
+d{\tilde{\beta}}&=\big(-i(\omega_{m}-\omega_{0})\tilde{\beta}-ig\tilde{\alpha}-\kappa_{m}\tilde{\beta}\big)dt+\sqrt{\kappa_m\overline{n}_{m}}(d\tilde{W}_3+id\tilde{W}_4) \\
+d{\tilde{\beta}^{*}}&=\big(i(\omega_{m}-\omega_{0})\tilde{\beta}^{*}+ig\tilde{\alpha}^{*}-\kappa_{m}\tilde{\beta}^{*}\big)dt+\sqrt{\kappa_m\overline{n}_{m}}(d\tilde{W}_3-id\tilde{W}_4) \label{RotateSDEs4}
+\end{align}
+其中$d\tilde{W}_i~(i=1,2,3,4)$也是互相独立的Wiener过程。这里拿$d\tilde{W}_1$简单说明旋转坐标变换后的方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}和\eqref{sdes1}--\eqref{sdes4}是等价的，借用It\^o积分的定义\eqref{ItoIntegral}可得
+\begin{equation}
+\begin{aligned}
+\int e^{i\omega_{0}t^{\prime}} d W_{1t^{\prime}} ={}& \int \left[\cos({\omega_{0}t^{\prime}})+i\sin({\omega_{0}t^{\prime}})\right] d W_{1t^{\prime}} \\
+={}& \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} \cos({\omega_{0}t_k})\left(W_{1t_{k+1}}-W_{1t_{k}}\right) \\
+&+ \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} i\sin({\omega_{0}t_k})\left(W_{1t_{k+1}}-W_{1t_{k}}\right)
+\end{aligned}
+\end{equation}
+由于高斯分布的和也是高斯分布，所以不难看出$d\tilde{W}_1$可以写作新的Wiener过程的线性组合。独立性可以从协方差看出来：
+\begin{equation}
+\begin{aligned}
+E\bigg(\int d \tilde{W}_{1t^{\prime}} &\int d \tilde{W}_{2t^{\prime}}\bigg) \\
+={}&E\left(\int \Re\left\{e^{i\omega_{0}t^{\prime}} (d{W}_{1t^{\prime}}+id{W}_{2t^{\prime}})\right\} \int \Im\left\{e^{i\omega_{0}t^{\prime}}(d{W}_{1t^{\prime}}+id{W}_{2t^{\prime}})\right\}\right) \\
+={}& i\int \cos({\omega_{0}t^{\prime}})\sin({\omega_{0}t^{\prime}}) d{t^{\prime}} - i\int \sin({\omega_{0}t^{\prime}})\cos({\omega_{0}t^{\prime}}) d{t^{\prime}} \\
+={}&0
+\end{aligned}
+\end{equation}
+上面的推导中需要用到It\^o规则$dW \cdot dW=dt$。
+
+随机微分方程的数值算法和通常的微分方程有着同样的思路，可以用差分来代替微分，当差分的步长足够小时，数值结果就会接近于真实的值。对于随机微分方程\eqref{StochasticDiff}，假设初始值已经确定，我们取时间步长为$\Delta t$，并用$\bar{X}_n$表示$n\Delta t$时的计算值，那么最简单的Euler算法可以写为
+\begin{equation}
+\bar{X}_{n+1}=\bar{X}_n + A \Delta t + B \Delta W_n
+\end{equation}
+正如前文所述，$\Delta W_n$是一个服从高斯分布的随机数，并且不同时刻的$\Delta W_n$也是独立的。同样的，随机微分方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的Euler算法为
+\begin{equation}
+\begin{aligned}
+\bar{\tilde{\alpha}}_{n+1}&=\bar{\tilde{\alpha}}_{n}+(-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n})\Delta t+\sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \\
+\bar{\tilde{\beta}}_{n+1}&=\bar{\tilde{\beta}}_{n}+(-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n})\Delta t+\sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n})
+\end{aligned}
+\end{equation}
+另外两个共轭方程已包含在内。Euler算法虽然简单易理解，但却收敛性较差，在测试中对于我们所选取的参数$1$~ns的计算需要$0.1$~fs的步长才能收敛，对于目标的$400$~ns总时长来说计算机时过于巨大，因此我们需要更高效的算法。随机微分方程的模拟算法方向有很多研究\cite{}，其中一种可接受的算法是高阶Taylor算法，就像通常微分方程的Taylor算法一样，借助Taylor展开将高阶导数引入差分之中就可以得到高阶Taylor算法。只不过由于随机微分方程特殊的微积分规则，它的高阶Taylor展开的形式和通常微分方程是不一样的，但是推导Taylor展开的思路却是一致的，这里不作展开，直接给出方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的二阶弱收敛Taylor算法为
+\begin{equation}
+\begin{aligned}
+\bar{\tilde{\alpha}}_{n+1}={}&\bar{\tilde{\alpha}}_{n}+(-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n})\Delta t+\sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \\
+&+\frac{1}{2} \Big[ (-i\omega_c-\kappa_c) (-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n}) \\
+&- ig (-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n}) \Big] \Delta t^2 \\
+&+\frac{1}{2} \Big[ (-i\omega_c-\kappa_c) \sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \\
+&- ig \sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n}) \Big] \Delta t \\
+\bar{\tilde{\beta}}_{n+1}={}&\bar{\tilde{\beta}}_{n}+(-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n})\Delta t+\sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n}) \\
+&+\frac{1}{2} \Big[ (-i\omega_m-\kappa_m) (-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n}) \\
+&- ig (-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n}) \Big] \Delta t^2 \\
+&+\frac{1}{2} \Big[ (-i\omega_m-\kappa_m) \sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n}) \\
+&- ig \sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \Big] \Delta t
+\end{aligned}
+\end{equation}
+在使用以上算法对随机微分方程进行模拟时，需要同时计算多条轨迹，并最终以有限抽样次数下的随机变量平均值$\overline{\alpha^{*p}\alpha^{q}\beta^{*r}\beta^{s}(t)}$代表系统的关联函数$\langle c^{\dag p}c^{q} m^{\dag r}m^{s}(t)\rangle$，这其实是一种蒙特卡罗模拟的思想，所以随机微分方程算法的精度除了依赖于步长之外，也受到轨迹样本空间里抽样次数的影响。
