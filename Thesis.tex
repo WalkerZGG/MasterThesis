@@ -18,11 +18,12 @@
 \usepackage{amsmath}
 % \usepackage{cases}
 % \usepackage{multirow}
+\usepackage{booktabs}
 
 % 参考文献
 \addbibresource{nkthesis.bib}
 % 图片文件夹
-\graphicspath{{image/}}
+\graphicspath{{image/}{figure/}}
 
 \includeonly{
 	./tex/abstract,
@@ -31,6 +32,7 @@
 	./tex/ch3,
 	./tex/ch4,
 	./tex/ch5,
+	./tex/conclusion,
 	./tex/references,
 	./tex/acknowledgements,
 	./tex/appendices,
@@ -49,11 +51,11 @@
 	论文题目(英文) = The Quantum Correlations in Cavity Magnonics,
 	论文作者       = 赵国淦,
 	学号           = 2120190163,
-	指导教师       = 王永教授,
+	指导教师       = 王永 \quad 副教授,
 	申请学位       = 硕士,
 	培养单位       = 南开大学,
-	学科专业       = 理科,
-	研究方向       = ,
+	学科专业       = 凝聚态物理,
+	研究方向       = 光与物质的相互作用,
 	答辩委员会主席 = {},
 	评阅人 = {},
 	中图分类号     = ,
@@ -90,17 +92,18 @@
 % 论文主体章节
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{./tex/ch1}
-\include{./tex/ch2}
+%\include{./tex/ch2}
 \include{./tex/ch3}
 \include{./tex/ch4}
 \include{./tex/ch5}
+\include{./tex/conclusion}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % 论文其他信息
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \include{./tex/references}
-\include{./tex/acknowledgements}
-\include{./tex/appendices}
+%\include{./tex/acknowledgements}
+%\include{./tex/appendices}
 \include{./tex/resume}
 
 \end{document}
