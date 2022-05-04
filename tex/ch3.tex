@@ -4,8 +4,120 @@
 \chapter{理论方法}
 \label{ch3}
 
+\section{腔磁振子系统的哈密顿量}
+本次研究中所考虑的腔磁振子系统是能实现强耦合的微波腔与YIG球耦合的系统，而本节所讨论的哈密顿量来源于Nakamura与Tang课题组的研究。在实验中使用的毫米尺度YIG球铁磁共振频率在GHz，而金属制微波腔通常会调制到TE101模式来实现腔中微波光场和YIG球的共振耦合。由于腔中光场每次经腔壁反射都会衰减掉一部分的能量，而YIG球也会因为因为与装置的接触损失一定的磁振子，所以需要对腔中光场进行相干驱动以保持系统中的耦合。关于系统耗散的机理我们会在下一节引入，整个的腔磁振子系统示意图如图\ref{FigSetup}所示:磁振子（YIG球）$m$处于腔内驻波$c$的磁场分量最大处，并且腔外还施加了一均匀偏置磁场$B$作用在磁振子上，这两种磁场方向互相垂直，腔外相干驱动源的频率为$\omega_0$，与腔的耦合强度为$\Omega$。
+\begin{figure}[htbp]
+	\centering
+	\includegraphics[width=0.5\textwidth,clip]{2_1}
+	\caption{腔磁振子系统示意图} 
+	\label{FigSetup}
+\end{figure}
+
+\subsection{空腔光场的量子化}
+我们要想探究系统中的量子特性，就必须对微波腔中的电磁场也就是光场进行二次量子化的处理。在经典场论里介质中的无源电磁场满足Maxwell方程组
+\begin{equation}
+\begin{aligned}
+& \nabla \times \mathbf{H}=\partial \mathbf{D} / \partial t \\
+& \nabla \times \mathbf{E}=-\partial \mathbf{B} / \partial t \\
+& \nabla \cdot \mathbf{B}=0 \\
+& \nabla \cdot \mathbf{D}=0
+\end{aligned}\label{Maxwell}
+\end{equation}
+对于微波腔中的电场分量和磁场分量来说YIG可以看做是各向同性的介质，我们可以得到
+\begin{equation}
+\mathbf{B} = \mu_{0} \mu \mathbf{H}, \quad \mathbf{D} = \varepsilon_0 \varepsilon \mathbf{E}
+\end{equation}
+其中$\mu_{0}$，$\varepsilon_0$分别是真空中的磁导率和介电常数，$\mu$，$\varepsilon$分别是YIG的磁导率和相对介电常数。从Maxwell方程组\eqref{Maxwell}中我们可以得到库伦规范$\nabla\cdot\mathbf{A}(\mathbf{r}, t)=0$下的波动方程
+\begin{equation}
+\nabla^{2} \mathbf{A}=\mu_{0}\mu \varepsilon_0\varepsilon \partial^{2} \mathbf{A} / \partial t^{2} \label{WaveFunction}
+\end{equation}
+其中$\mathbf{A}(\mathbf{r}, t)$是电磁场的矢势并且满足
+\begin{equation}
+\mathbf{E}=-\partial \mathbf{A}(\mathbf{r}, t) / \partial t, \quad \mathbf{B}=\nabla \times \mathbf{A}(\mathbf{r}, t)
+\label{EBARelations}
+\end{equation}
+
+波动方程\eqref{WaveFunction}具有形式解$\mathbf{A}(\mathbf{r}, t)\propto\sum_{k} \left[A_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ A_{k}^* \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right]$，二次量子化的操作就是将复振幅$A_{k}$，$A_{k}^*$替换为湮灭产生算符$c_{k}$，$c_{k}^{\dag}$：
+\begin{equation}
+\hat{\mathbf{A}}(\mathbf{r}, t)\propto\sum_{k} \left[c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ c_{k}^{\dag} \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right] 
+\label{SecondQuantized}
+\end{equation}
+在这一形式下使用关系\eqref{EBARelations}计算腔中光场的能量$E_c=1/2 \int_{V}\left(\varepsilon \mathbf{E} \cdot \mathbf{E}+1/\mu \mathbf{B} \cdot \mathbf{B}\right) d V$可以得到光场的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{c}} = \hbar \sum_{k} \omega_{k} c_{k}^{\dag} c_{k}
+\label{CavityHamiltonian}
+\end{equation}
+其中$\omega_{k}$表示模式数为$k$的微波腔共振频率，在这个过程中我们需要用下面的亥姆霍兹方程定出\eqref{SecondQuantized}中的归一化系数
+\begin{equation}
+\left(\nabla^{2}+k^{2}\right) \mathbf{u}_{k}(\mathbf{r})=0
+\label{Helmholtz}
+\end{equation}
+二维矢量$\mathbf{u}_{k}$表示偏振方向并且满足$\int_{V} \mathbf{u}_{k} \cdot \mathbf{u}_{k^{\prime}}^{*} \mathrm{~d}^{3} r=V \delta_{k, k^{\prime}}$，$V$表示腔的内部体积。亥姆霍兹方程\eqref{Helmholtz}还需要满足周期性边界条件，这取决于具体腔的几何外形和材质。最终定出系数的场算符写作
+\begin{align}
+&\hat{\mathbf{A}}(\mathbf{r}, t)= \sum_{k} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} + c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
+&\hat{\mathbf{E}}(\mathbf{r}, t)=i \sum_{k} \sqrt{\frac{\hbar \omega_{k}}{2 V \varepsilon_{0} \varepsilon}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} - c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
+&\hat{\mathbf{B}}(\mathbf{r}, t)=i \sum_{k} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \left[ c_{k} \mathbf{k} \times \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} - c_{k}^{\dag} \mathbf{k}^* \times \mathbf{u}_{k}(\mathbf{r})^* e^{i \omega_{k} t} \right]
+\label{BOperator}
+\end{align}
+
+\subsection{自旋波的量子化及与光场的耦合}
+处于YIG球中的自旋粒子之间有着强关联相互作用，这使得它们的集体运动表现出自旋波的行为，类似于声波可以量子化为声子那样，自旋波的量子化激子被称作磁振子。自旋波的激发会引起宏观上磁性材料磁化强度的变化，我们可以从磁化强度满足的演化方程出发，使用与上一小节类似的方法也可以将YIG球中的自旋波（磁化强度）量子化。
+
+对于在外加偏置磁场$\mathbf{H}_0$中磁化的YIG球，用$\mathbf{M}$表示它的磁化强度，此时材料的自由能可以表示为
+\begin{equation}
+\begin{aligned}
+E=\int_{V} \mathrm{~d}^{3} r \left[\frac{A}{M_{\mathrm{s}}^{2}} \sum_{i=x, y, z}\left|\nabla M_{i}\right|^{2}+U_{\mathrm{an}}[\mathbf{M}]-\mu_{0} \mathbf{M} \cdot \mathbf{H}_{0}-\frac{\mu_{0}}{2} \mathbf{M} \cdot \mathbf{H}_{\mathrm{d}}[\mathbf{M}]\right]
+\label{FreeEnergy}
+\end{aligned}
+\end{equation}
+上式中第一项的积分表示磁化体系的交换能。第二项的积分表示各向异性能，对于常见的易轴各向异性会有正比于$M_z^2$的形式。第三项的积分表示与外加磁场间产生的Zeeman能。最后一项的积分表示退磁自能。从单个自旋的角动量定理可以得到磁化强度在无耗散时的演化方程
+\begin{equation}
+\dot{\mathbf{M}}=-\gamma \mathbf{M} \times \mu_{0} \mathbf{H}_{0}
+\label{NoDissLLEquation}
+\end{equation}
+其中$\gamma=g_{\mathrm{Z}} \mu_{\mathrm{B}} / \hbar$表示旋磁比，$g_{\mathrm{Z}}$表示玻尔磁子，$\mu_{\mathrm{B}}$是电子的朗德因子。由于YIG的矫顽力很小，很容易达到饱和磁化状态，此时方程\eqref{NoDissLLEquation}的解可以理解为磁化强度在外加磁场限定的方向附近做微小震荡，即$\mathbf{M}(\mathbf{r},t)=\mathbf{M}_{\mathrm{s}}(\mathbf{r})+\delta \mathbf{M}(\mathbf{r}, t)$。我们此时所做的量子化操作如下
+\begin{equation}
+\delta \hat{\mathbf{M}}(\mathbf{r}, t) \propto \frac{M_{\mathrm{s}}}{2} \sum_{\eta}\left[\mathbf{w}_{\eta}(\mathbf{r}) {m}_{\eta}+\mathbf{w}_{\eta}^{*}(\mathbf{r}) {m}_{\eta}^{\dagger}\right]
+\label{MOperator}
+\end{equation}
+其中${m}_{\eta}$，${m}_{\eta}^{\dagger}$分别表示磁振子模式$\eta$下的湮灭和产生算符，$mathbf{w}_{\eta}$是对应的无量纲振幅。同样地用这一形式计算\eqref{FreeEnergy}，我们关注的是分平衡量$\delta \hat{\mathbf{M}}$产生的能量，积分项中只会包含$\delta \hat{\mathbf{M}}$的一次和二次项，而一次项的积分我们认为是零，剩下的二次项可以整理为磁振子的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{m}}=\hbar \sum_{\eta} \omega_{\eta} {m}_{\eta}^{\dagger} {m}_{\eta}
+\end{equation}
+其中$\omega_{\eta}$表示模式${\eta}$磁振子的铁磁共振频率。磁化强度算符归一化系数的计算依赖于不同的各向异性考量，具体可以查看参考文献。
+
+现在我们可以来考虑把YIG放置到微波腔中，并且外加偏置磁场使其饱和磁化。此时整个系统能量为
+\begin{equation}
+\hat{\mathcal{H}}=\int_V \left(\frac{\varepsilon}{2} \hat{\mathbf{E}}^{2}+\frac{1}{2 \mu} \hat{\mathbf{B}}^{2}-\hat{\mathbf{M}} \cdot \hat{\mathbf{B}}+\hat{\mathcal{H}}_{\mathrm{m}}\right) d \mathbf{r}
+\end{equation}
+可以看出上式中前两项和最后一项分别表示微波腔中光场和磁振子本身的能量密度，第三项表示磁振子与微波的磁场分量相互作用的Zeeman能。我们将场算符\eqref{BOperator}和\eqref{MOperator}代入其中就能得到腔中光与磁振子相互作用的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{cm}}=\hbar \sum_{k \eta}\left(g_{k \eta} \hat{a}_{k} \hat{m}_{\eta}^{\dagger}+g_{k \eta}^{*} \hat{a}_{k}^{\dagger} \hat{m}_{\eta}\right)
+\end{equation}
+上式中我们已经通过旋转波近似拿掉了粒子数不守衡的项，耦合率$g_{k \eta}$为
+\begin{equation}
+\hbar g_{k \eta}=-\frac{M_{s}}{2} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \int d \mathbf{r}\left[\nabla \times \mathbf{u}_{k}(\mathbf{r})\right] \cdot \mathbf{w}_{\eta}^{*}(\mathbf{r})
+\end{equation}
+不失一般性地，我们可以认为耦合率$g_{k \eta}$是实数。至此，我们得到的腔磁振子系统的总哈密顿量为
+\begin{equation}
+\begin{aligned}
+\hat{H}_{tot}=\hat{H}_{\mathrm{c}}+\hat{H}_{\mathrm{m}}+\hat{H}_{\mathrm{cm}}
+\end{aligned}
+\end{equation}
+由于我们考虑的微波腔一直在被外部光源驱动，所以还需要在哈密顿量中加入持续产生相干光子的驱动项
+\begin{equation}
+\hat{H}_{\mathrm{D}}=\sum_{p} \hbar \Omega_{p}\left({a}_{p} e^{i \omega_{\mathrm{0}} t}+{a}_{p}^{\dagger} e^{-i \omega_{\mathrm{0}} t}\right)
+\end{equation}
+其中$\Omega_{p}$是与光源功率$P$有关的参数，一般来说$|\Omega_{p}|^2 \propto P$。在我们的研究中主要考虑的是磁振子的基模即Kittel模与一个腔模的耦合，所使用的完整哈密顿量如下
+\begin{equation}
+H = \hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^{\dag}c+i\hbar\Omega(c^{\dag}e^{-i\omega_{0}t}-ce^{i\omega_{0}t})
+\label{Hamiltonian}
+\end{equation}
+其中$\omega_{c}$，$\omega_{m}$分别表示单个腔模和磁振子模的频率，$g$表示它们之间的耦合率。YIG球中Kittel模频率与偏置磁场满足关系$\omega_{m}=\gamma\mu_{0} \mathbf{H}_{0}=\gamma B$。
+
 \section{主方程}
-上一章中得到的腔磁振子系统的哈密顿量\eqref{Hamiltonian}只是一个理想化的封闭模型，实际中由于需要对腔中光场进行不断的驱动与测量，系统会不可避免地受到外部环境的影响。通常来说，外部环境会转移或是吸收内部系统的能量，从而导致系统的耗散以及退相干。在量子力学中有多种方法可以用来处理这样的开放量子系统，但是由于我们想了解腔磁振子系统中量子态的具体特点，必须要使用既能描述纯态又能描述混态的密度算符，这样一来合适的方法就是这一节所要论述的主方程。
+\label{secMaster}
+上一节中得到的腔磁振子系统的哈密顿量\eqref{Hamiltonian}只是一个理想化的封闭模型，实际中由于需要对腔中光场进行不断的驱动与测量，系统会不可避免地受到外部环境的影响。通常来说，外部环境会转移或是吸收内部系统的能量，从而导致系统的耗散以及退相干。在量子力学中有多种方法可以用来处理这样的开放量子系统，但是由于我们想了解腔磁振子系统中量子态的具体特点，必须要使用既能描述纯态又能描述混态的密度算符，这样一来合适的方法就是这一节所要论述的主方程。
 
 \subsection{Liouville--von Neumann方程的解}
 为了在模型中加入环境的影响，我们可以假设系统$S$和外部环境$R$的耦合具有如下形式的哈密顿量：
@@ -140,7 +252,7 @@ H_{SR}\equiv&\sum_{i}g_{c,i}(c^{\dag}a_{i}+a_{i}^{\dag}c)+\sum_{j}g_{m,j}(m^{\da
 R_{0}=\prod_{i} e^{-\hbar \omega_{i} a_{i}^{\dag}a_{i} / k_{B} T}\left(1-e^{-\hbar \omega_{i} / k_{B} T}\right) \otimes \prod_{j} e^{-\hbar \omega_{j} b_{j}^{\dag}b_{j} / k_{B} T}\left(1-e^{-\hbar \omega_{j} / k_{B} T}\right)
 \label{ThermalState}
 \end{equation}
-其中$k_{B}$表示玻尔兹曼常数，$R_{0}$即为满足玻色--爱因斯坦分布的密度算符。值得注意的是，关于\eqref{HamCMRes}中的$H_{SR}$，这里已经通过旋转波近似略去了粒子数不守衡的项，但是对于有着超强耦合的系统这一近似就不再成立，具体的讨论见相关研究\cite{}。
+其中$k_{B}$表示玻尔兹曼常数，$R_{0}$即为满足玻色--爱因斯坦分布的密度算符。值得注意的是，关于\eqref{HamCMRes}中的$H_{SR}$，这里已经通过旋转波近似略去了粒子数不守衡的项，但是对于有着超强耦合的系统这一近似就不再成立，具体的讨论见相关研究\cite{PhysRevA.98.053834Ridolfo}。
 
 把哈密顿量\eqref{HamCMRes}对照上一小节\eqref{HsrSpec}的形式表示为
 \begin{equation}
@@ -185,11 +297,17 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 上面的关联函数\eqref{zeroCorrelations}--\eqref{zeroCorrelations2}以及其厄米共轭的值都是零，这样就大大简化了方程的形式，余下不为零的关联函数为
 \begin{align}
 \left\langle\tilde{\Gamma}_{1}(t) \tilde{\Gamma}_{2}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{i, k} g_{c,i} g_{c,k} e^{i \omega_{i} t} e^{-i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} a_{i}^{\dag} a_{k}\right) \notag \\
-&=\sum_{i} g_{c,i}^{2} e^{i \omega_{i}\left(t-t^{\prime}\right)} \overline{n}_c\left(\omega_{i}, T\right) \label{Correlations1} \\
+&=\sum_{i} g_{c,i}^{2} e^{i \omega_{i}\left(t-t^{\prime}\right)} \overline{n}_c\left(\omega_{i}, T\right) \label{Correlations1}
+\end{align}
+\begin{align}
 \left\langle\tilde{\Gamma}_{2}(t) \tilde{\Gamma}_{1}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{i, k} g_{c,i} g_{c,k} e^{-i \omega_{i} t} e^{i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} a_{i} a_{k}^{\dag}\right) \notag \\
-&=\sum_{i} g_{c,i}^{2} e^{-i \omega_{i}\left(t-t^{\prime}\right)} \left[\overline{n}_c \left(\omega_{i}, T\right)+1\right] \\
+&=\sum_{i} g_{c,i}^{2} e^{-i \omega_{i}\left(t-t^{\prime}\right)} \left[\overline{n}_c \left(\omega_{i}, T\right)+1\right]
+\end{align}
+\begin{align}
 \left\langle\tilde{\Gamma}_{3}(t) \tilde{\Gamma}_{4}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{j, k} g_{m,j} g_{m,k} e^{i \omega_{j} t} e^{-i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} b_{j}^{\dagger} b_{k}\right) \notag \\
-&=\sum_{j} g_{m,j}^{2} e^{i \omega_{j}\left(t-t^{\prime}\right)} \overline{n}_m\left(\omega_{j}, T\right) \\
+&=\sum_{j} g_{m,j}^{2} e^{i \omega_{j}\left(t-t^{\prime}\right)} \overline{n}_m\left(\omega_{j}, T\right)
+\end{align}
+\begin{align}
 \left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0} &=\sum_{j, k} g_{m,j} g_{m,k} e^{-i \omega_{j} t} e^{i \omega_{k} t^{\prime}} \operatorname{tr}_{R}\left(R_{0} b_{j} b_{k}^{\dagger}\right) \notag \\
 &=\sum_{j} g_{m,j}^{2} e^{-i \omega_{j}\left(t-t^{\prime}\right)}\left[\overline{n}_m\left(\omega_{j}, T\right)+1\right] \label{Correlations4}
 \end{align}
@@ -222,7 +340,7 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 \left\langle\tilde{\Gamma}_{4}(t) \tilde{\Gamma}_{3}\left(t^{\prime}\right)\right\rangle_{R_0} &=\int_{0}^{\infty} d \omega e^{-i \omega \tau} G_b(\omega) g_{m,j}^{2} \left[\overline{n}_m\left(\omega, T\right)+1\right] \label{}
 \end{align}
 %书中这部分的推导有提到积分中的高频平均掉了低频，是因为各个量的相乘关系导致积分时低频的包络都成了0。旋转波近似中有一个高频被平均掉的说法，是因为高频和低频的相加关系。
-方程\eqref{MasterEqBorn3}的积分中存在着三种时间尺度，其中热库的关联函数有着极窄的线型\cite{}，其有效关联时间$t_R \sim \hbar/k_B T \approx 10^{-12}s$。而在腔磁振子系统中，系统$\tilde{\rho} (t-\tau)$能发生明显变化的时间取决于耦合率以及关联函数，在实验参数中$t_S \sim 10^{-7}s$。振荡项$e^{-i \omega_{c(m)} \tau}$在微波频域内的时间尺度$t_0 \sim 10^{-10}s$。因此在$t_S$时间尺度内对 $\tau$ 积分时$\tilde{\rho}$可以看作是不变的，换句话说，我们可以直接将$\tilde{\rho} (t-\tau)$替换为$\tilde{\rho} (t)$，也就是使用Markov近似将$\tilde{\rho}$从积分中提出来，剩余的项可以积分为
+方程\eqref{MasterEqBorn3}的积分中存在着三种时间尺度，其中热库的关联函数有着极窄的线型\cite{carmichael1999statistical}，其有效关联时间$t_R \sim \hbar/k_B T \approx 10^{-12}s$。而在腔磁振子系统中，系统$\tilde{\rho} (t-\tau)$能发生明显变化的时间取决于耦合率以及关联函数，在实验参数中$t_S \sim 10^{-7}s$。振荡项$e^{-i \omega_{c(m)} \tau}$在微波频域内的时间尺度$t_0 \sim 10^{-10}s$。因此在$t_S$时间尺度内对 $\tau$ 积分时$\tilde{\rho}$可以看作是不变的，换句话说，我们可以直接将$\tilde{\rho} (t-\tau)$替换为$\tilde{\rho} (t)$，也就是使用Markov近似将$\tilde{\rho}$从积分中提出来，剩余的项可以积分为
 \begin{equation}
 \begin{aligned}
 &\int_{0}^{t} d \tau \int_{0}^{\infty} d \omega e^{-i\left(\omega-\omega_{c}\right) \tau} G_a(\omega) g_{c}^{2}(\omega) \\
@@ -248,7 +366,7 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 &\quad \Delta_m \equiv P \int_{0}^{\infty} d \omega \frac{G_b(\omega) g_{m}^{2}(\omega)}{\omega_{m}-\omega} \\
 \kappa_c \equiv 2 \pi G_a\left(\omega_{c}\right)g_{c}^{2}(\omega_c),
 &\quad \kappa_m \equiv 2 \pi G_b\left(\omega_{m}\right)g_{m}^{2}(\omega_m) \\
-\overline{n}_c \equiv \overline{n}_c\left(\omega_{c}, T\right),
+\overline{n}_c \equiv \overline{n}_c\left(\omega_{c}, T\right),\label{KcKmDefination}
 &\quad \overline{n}_m \equiv \overline{n}_m\left(\omega_{m}, T\right)
 \end{align}
 结合\eqref{MasterEqBorn3}--\eqref{IntergralCorrelations}后，我们就得到了Born--Markov近似下腔磁振子系统的主方程
@@ -282,6 +400,7 @@ s_{1}=c, \quad s_{2}=c^{\dagger}, \quad s_{3}=m, \quad s_{4}=m^{\dagger} \\
 其中$\mathcal{L}$为Liouvillian超算符，定义为$\mathcal{L}\{\rho\}=\sum\limits_{o=c,m}[\kappa_{o}(1 +\overline{n}_{o})(2o\rho o^{\dag}-\{o^{\dag}o,\rho\}) +\kappa_{o} \overline{n}_{o} (2o^{\dag}\rho o-\{oo^{\dag},\rho\})]$。
 
 \section{Fokker-Planck方程}
+\label{sec3.2}
 主方程\eqref{MasterEquation}是由量子力学算符构成的方程，多数情况下直接求解$\rho$会非常困难，即使是数值求解也需要选择合适的一组基来展开才能得到比较好的结果。我们这一节要做的是借助量子力学的相干态表象把这一关于算符的方程转换为关于经典复数变量的微积分方程。
 
 \subsection{Glauber-Sudarshan $P$表象}
@@ -319,9 +438,10 @@ m|\beta\rangle=\beta|\beta\rangle,& \quad\langle\beta| m^{\dagger}=(m|\beta\rang
 使用这一方法可以很方便地计算正则序（normal order）算符的期望值，例如$\langle c^{\dagger}c \rangle = \int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*};\beta,\beta^{*};t) \langle \alpha,\beta|c^{\dagger}c|\alpha,\beta\rangle = \int d^{2}\alpha d^{2}\beta P(\alpha,\alpha^{*};\beta,\beta^{*};t)\alpha^{*}\alpha$。为方便后面的推导，我们使用如下记号
 \begin{equation}
 \overline{\alpha^{*}\alpha} = \int d^{2}\alpha d^{2}\beta P\alpha^{*}\alpha = \langle c^{\dagger}c \rangle
+\label{MeanDefination}
 \end{equation}
 
-此外，关于$P$表象还值得一提的是，Glauber-Sudarshan $P$表象\eqref{Pfun}只是$P$表象的一种形式，原则上可以使用不同的概率分布函数$P$来定义$P$表象的积分\cite{}。其它的$P$表象如复数$P$表象（complex $P$ representation），正定$P$表象（positive $P$ representation）等在处理非线性系统时很有帮助，但是对于我们这里的系统 \eqref{Hamiltonian}，使用\eqref{Pfun}就足够了。
+此外，关于$P$表象还值得一提的是，Glauber-Sudarshan $P$表象\eqref{Pfun}只是$P$表象的一种形式，原则上可以使用不同的概率分布函数$P$来定义$P$表象的积分\cite{walls2007quantum}。其它的$P$表象如复数$P$表象（complex $P$ representation），正定$P$表象（positive $P$ representation）等在处理非线性系统时很有帮助，但是对于我们这里的系统 \eqref{Hamiltonian}，使用\eqref{Pfun}就足够了。
 
 \subsection{腔磁振子系统的Fokker-Planck方程}
 现在我们将系统的哈密顿量\eqref{Hamiltonian}以及$P$表象下的密度算符\eqref{Pfun}代入到主方程\eqref{MasterEquation}中
@@ -413,10 +533,10 @@ m^{\dag}|\alpha,\beta\rangle\langle \alpha,\beta|=(\frac{\partial}{\partial\beta
 \label{Fokker-Planck}
 \end{aligned}
 \end{equation}
-上面的方程和前面得到的主方程\eqref{MasterEquation}是完全等价的，但是在非线性系统中可能会有些差别，具体参见相关研究\cite{}。另外，可以看出Fokker-Planck方程\eqref{Fokker-Planck}是关于$P$函数的含时二阶偏微分方程，我们可以通过假设长时间演化后的稳态形式去掉时间变量来得到系统的稳态解，但是还有另外一种数值方法来得到方程的含时解，那就是随机微分方程。
+上面的方程和前面得到的主方程\eqref{MasterEquation}是完全等价的，但是在非线性系统中可能会有些差别，具体参见相关研究\cite{PhysRevA.66.033812Drummond}。另外，可以看出Fokker-Planck方程\eqref{Fokker-Planck}是关于$P$函数的含时二阶偏微分方程，我们可以通过假设长时间演化后的稳态形式去掉时间变量来得到系统的稳态解，但是还有另外一种数值方法来得到方程的含时解，那就是随机微分方程。
 
 \section{随机微分方程}
-随机微分方程是应用数学领域中非常重要的一类方程，在金融学、电路滤波问题、优化问题等方面都有着广泛的应用。随机微分方程在数学上有着一套严格的定义和证明，详细可参考相关书籍\cite{}，我们这里着重理解概念以及在物理系统中的使用。
+随机微分方程是应用数学领域中非常重要的一类方程，在金融学、电路滤波问题、优化问题等方面都有着广泛的应用。随机微分方程在数学上有着一套严格的定义和证明，详细可参考相关书籍\cite{gardiner1985handbook}，我们这里着重理解概念以及在物理系统中的使用。
 
 \subsection{随机过程与It\^o积分}
 我们先考虑一组随机变量序列$X_{1}, X_{2}, \ldots, X_{n}, \ldots$，假如它们对应于一组时刻序列$t_{1}<t_{2}<\cdots<t_{n}<\cdots$，我们就称这一族时间依赖的随机变量$\{X_{t}\}$为一个随机过程。物理学中有一个经典的随机过程，就是布朗运动。我们知道由于随机涨落力的影响，悬浮于液体中的花粉会表现出无规则的运动，即使花粉保持同样的初始条件每次的运动轨迹也不会完全重合。但是当大量花粉从相同的初始状态运动时，每一时刻的花粉位置就表现出统计上的分布规律，也就是一个随机过程。
@@ -511,7 +631,7 @@ E\bigg(\int d \tilde{W}_{1t^{\prime}} &\int d \tilde{W}_{2t^{\prime}}\bigg) \\
 \bar{\tilde{\beta}}_{n+1}&=\bar{\tilde{\beta}}_{n}+(-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n})\Delta t+\sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n})
 \end{aligned}
 \end{equation}
-另外两个共轭方程已包含在内。Euler算法虽然简单易理解，但却收敛性较差，在测试中对于我们所选取的参数$1$~ns的计算需要$0.1$~fs的步长才能收敛，对于目标的$400$~ns总时长来说计算机时过于巨大，因此我们需要更高效的算法。随机微分方程的模拟算法方向有很多研究\cite{}，其中一种可接受的算法是高阶Taylor算法，就像通常微分方程的Taylor算法一样，借助Taylor展开将高阶导数引入差分之中就可以得到高阶Taylor算法。只不过由于随机微分方程特殊的微积分规则，它的高阶Taylor展开的形式和通常微分方程是不一样的，但是推导Taylor展开的思路却是一致的，这里不作展开，直接给出方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的二阶弱收敛Taylor算法为
+另外两个共轭方程已包含在内。Euler算法虽然简单易理解，但却收敛性较差，在测试中对于我们所选取的参数$1$~ns的计算需要$0.1$~fs的步长才能收敛，对于目标的$400$~ns总时长来说计算机时过于巨大，因此我们需要更高效的算法。随机微分方程的模拟算法方向有很多研究\cite{Kloeden1992numerical}，其中一种可接受的算法是高阶Taylor算法，就像通常微分方程的Taylor算法一样，借助Taylor展开将高阶导数引入差分之中就可以得到高阶Taylor算法。只不过由于随机微分方程特殊的微积分规则，它的高阶Taylor展开的形式和通常微分方程是不一样的，但是推导Taylor展开的思路却是一致的，这里不作展开，直接给出方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的二阶弱收敛Taylor算法为
 \begin{equation}
 \begin{aligned}
 \bar{\tilde{\alpha}}_{n+1}={}&\bar{\tilde{\alpha}}_{n}+(-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n})\Delta t+\sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \\
