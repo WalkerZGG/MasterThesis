@@ -4,8 +4,104 @@
 \chapter{腔磁振子系统的哈密顿量}
 \label{ch2}
 
-\section{空腔}
+\section{空腔光场的量子化}
+由于实验中使用的毫米尺度YIG球铁磁共振频率在GHz，所以通常使用金属制微波腔来实现腔中光场和YIG球的共振耦合。我们想要探究系统中的量子特性，就必须对腔中的光场也就是电磁场进行二次量子化的处理。在经典场论里介质中的无源电磁场满足Maxwell方程组
+\begin{equation}
+\begin{aligned}
+& \nabla \times \mathbf{H}=\partial \mathbf{D} / \partial t \\
+& \nabla \times \mathbf{E}=-\partial \mathbf{B} / \partial t \\
+& \nabla \cdot \mathbf{B}=0 \\
+& \nabla \cdot \mathbf{D}=0
+\end{aligned}\label{Maxwell}
+\end{equation}
+对于微波腔中的电场分量和磁场分量来说YIG可以看做是各向同性的介质，我们可以得到
+\begin{equation}
+\mathbf{B} = \mu_{0} \mu \mathbf{H}, \quad \mathbf{D} = \varepsilon_0 \varepsilon \mathbf{E}
+\end{equation}
+其中$\mu_{0}$，$\varepsilon_0$分别是真空中的磁导率和介电常数，$\mu$，$\varepsilon$分别是YIG的磁导率和相对介电常数。从Maxwell方程组\eqref{Maxwell}中我们可以得到库伦规范$\nabla\cdot\mathbf{A}(\mathbf{r}, t)=0$下的波动方程
+\begin{equation}
+\nabla^{2} \mathbf{A}=\mu_{0}\mu \varepsilon_0\varepsilon \partial^{2} \mathbf{A} / \partial t^{2} \label{WaveFunction}
+\end{equation}
+其中$\mathbf{A}(\mathbf{r}, t)$是电磁场的矢势并且满足
+\begin{equation}
+\mathbf{E}=-\partial \mathbf{A}(\mathbf{r}, t) / \partial t, \quad \mathbf{B}=\nabla \times \mathbf{A}(\mathbf{r}, t)
+\label{EBARelations}
+\end{equation}
 
+波动方程\eqref{WaveFunction}具有形式解$\mathbf{A}(\mathbf{r}, t)\propto\sum_{k} \left[A_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ A_{k}^* \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right]$，二次量子化的操作就是将复振幅$A_{k}$，$A_{k}^*$替换为湮灭产生算符$c_{k}$，$c_{k}^{\dag}$：
+\begin{equation}
+\hat{\mathbf{A}}(\mathbf{r}, t)\propto\sum_{k} \left[c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ c_{k}^{\dag} \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right] 
+\label{SecondQuantized}
+\end{equation}
+在这一形式下使用关系\eqref{EBARelations}计算腔中光场的能量$E_c=1/2 \int_{V}\left(\varepsilon \mathbf{E} \cdot \mathbf{E}+1/\mu \mathbf{B} \cdot \mathbf{B}\right) d V$可以得到光场的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{c}} = \hbar \sum_{k} \omega_{k} c_{k}^{\dag} c_{k}
+\label{CavityHamiltonian}
+\end{equation}
+其中$\omega_{k}$表示模式数为$k$的微波腔共振频率，在这个过程中我们需要用下面的亥姆霍兹方程定出\eqref{SecondQuantized}中的归一化系数
+\begin{equation}
+\left(\nabla^{2}+k^{2}\right) \mathbf{u}_{k}(\mathbf{r})=0
+\label{Helmholtz}
+\end{equation}
+二维矢量$\mathbf{u}_{k}$表示偏振方向并且满足$\int_{V} \mathbf{u}_{k} \cdot \mathbf{u}_{k^{\prime}}^{*} \mathrm{~d}^{3} r=V \delta_{k, k^{\prime}}$，$V$表示腔的内部体积。亥姆霍兹方程\eqref{Helmholtz}还需要满足周期性边界条件，这取决于具体腔的几何外形和材质。最终定出系数的场算符写作
+\begin{align}
+&\hat{\mathbf{A}}(\mathbf{r}, t)= \sum_{k} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} + c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
+&\hat{\mathbf{E}}(\mathbf{r}, t)=i \sum_{k} \sqrt{\frac{\hbar \omega_{k}}{2 V \varepsilon_{0} \varepsilon}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} - c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
+&\hat{\mathbf{B}}(\mathbf{r}, t)=i \sum_{k} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \left[ c_{k} \mathbf{k} \times \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} - c_{k}^{\dag} \mathbf{k}^* \times \mathbf{u}_{k}(\mathbf{r})^* e^{i \omega_{k} t} \right]
+\label{BOperator}
+\end{align}
 
+\section{自旋波的量子化及与光场的耦合}
+处于YIG球中的自旋粒子之间有着强关联相互作用，这使得它们的集体运动表现出自旋波的行为，类似于声波可以量子化为声子那样，自旋波的量子化激子被称作磁振子。自旋波的激发会引起宏观上磁性材料磁化强度的变化，我们可以从磁化强度满足的演化方程出发，使用与上一节类似的方法也可以将YIG球中的自旋波（磁化强度）量子化。
 
-\section{磁振子}
+对于在外加偏置磁场$\mathbf{H}_0$中磁化的YIG球，用$\mathbf{M}$表示它的磁化强度，此时材料的自由能可以表示为
+\begin{equation}
+\begin{aligned}
+E=\int_{V} \mathrm{~d}^{3} r \left[\frac{A}{M_{\mathrm{s}}^{2}} \sum_{i=x, y, z}\left|\nabla M_{i}\right|^{2}+U_{\mathrm{an}}[\mathbf{M}]-\mu_{0} \mathbf{M} \cdot \mathbf{H}_{0}-\frac{\mu_{0}}{2} \mathbf{M} \cdot \mathbf{H}_{\mathrm{d}}[\mathbf{M}]\right]
+\label{FreeEnergy}
+\end{aligned}
+\end{equation}
+上式中第一项的积分表示磁化体系的交换能。第二项的积分表示各向异性能，对于常见的易轴各向异性会有正比于$M_z^2$的形式。第三项的积分表示与外加磁场间产生的Zeeman能。最后一项的积分表示退磁自能。从单个自旋的角动量定理可以得到磁化强度在无耗散时的演化方程
+\begin{equation}
+\dot{\mathbf{M}}=-\gamma \mathbf{M} \times \mu_{0} \mathbf{H}_{0}
+\label{NoDissLLEquation}
+\end{equation}
+其中$\gamma=g_{\mathrm{Z}} \mu_{\mathrm{B}} / \hbar$表示旋磁比，$g_{\mathrm{Z}}$表示玻尔磁子，$\mu_{\mathrm{B}}$是电子的朗德因子。由于YIG的矫顽力很小，很容易达到饱和磁化状态，此时方程\eqref{NoDissLLEquation}的解可以理解为磁化强度在外加磁场限定的方向附近做微小震荡，即$\mathbf{M}(\mathbf{r},t)=\mathbf{M}_{\mathrm{s}}(\mathbf{r})+\delta \mathbf{M}(\mathbf{r}, t)$。我们此时所做的量子化操作如下
+\begin{equation}
+\delta \hat{\mathbf{M}}(\mathbf{r}, t) \propto \frac{M_{\mathrm{s}}}{2} \sum_{\eta}\left[\mathbf{w}_{\eta}(\mathbf{r}) {m}_{\eta}+\mathbf{w}_{\eta}^{*}(\mathbf{r}) {m}_{\eta}^{\dagger}\right]
+\label{MOperator}
+\end{equation}
+其中${m}_{\eta}$，${m}_{\eta}^{\dagger}$分别表示磁振子模式$\eta$下的湮灭和产生算符，$mathbf{w}_{\eta}$是对应的无量纲振幅。同样地用这一形式计算\eqref{FreeEnergy}，我们关注的是分平衡量$\delta \hat{\mathbf{M}}$产生的能量，积分项中只会包含$\delta \hat{\mathbf{M}}$的一次和二次项，而一次项的积分我们认为是零，剩下的二次项可以整理为磁振子的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{m}}=\hbar \sum_{\eta} \omega_{\eta} {m}_{\eta}^{\dagger} {m}_{\eta}
+\end{equation}
+其中$\omega_{\eta}$表示模式${\eta}$磁振子的铁磁共振频率。磁化强度算符归一化系数的计算依赖于不同的各向异性考量，具体可以查看参考文献。
+
+现在我们可以来考虑把YIG放置到微波腔中，并且外加偏置磁场使其饱和磁化。此时整个系统能量为
+\begin{equation}
+\hat{\mathcal{H}}=\int_V \left(\frac{\varepsilon}{2} \hat{\mathbf{E}}^{2}+\frac{1}{2 \mu} \hat{\mathbf{B}}^{2}-\hat{\mathbf{M}} \cdot \hat{\mathbf{B}}+\hat{\mathcal{H}}_{\mathrm{m}}\right) d \mathbf{r}
+\end{equation}
+可以看出上式中前两项和最后一项分别表示微波腔中光场和磁振子本身的能量密度，第三项表示磁振子与微波的磁场分量相互作用的Zeeman能。我们将场算符\eqref{BOperator}和\eqref{MOperator}代入其中就能得到腔中光与磁振子相互作用的哈密顿量
+\begin{equation}
+\hat{H}_{\mathrm{cm}}=\hbar \sum_{k \eta}\left(g_{k \eta} \hat{a}_{k} \hat{m}_{\eta}^{\dagger}+g_{k \eta}^{*} \hat{a}_{k}^{\dagger} \hat{m}_{\eta}\right)
+\end{equation}
+上式中我们已经通过旋转波近似拿掉了粒子数不守衡的项，耦合率$g_{k \eta}$为
+\begin{equation}
+\hbar g_{k \eta}=-\frac{M_{s}}{2} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \int d \mathbf{r}\left[\nabla \times \mathbf{u}_{k}(\mathbf{r})\right] \cdot \mathbf{w}_{\eta}^{*}(\mathbf{r})
+\end{equation}
+不失一般性地，我们可以认为耦合率$g_{k \eta}$是实数。至此，我们得到的腔磁振子系统的总哈密顿量为
+\begin{equation}
+\begin{aligned}
+\hat{H}_{tot}=\hat{H}_{\mathrm{c}}+\hat{H}_{\mathrm{m}}+\hat{H}_{\mathrm{cm}}
+\end{aligned}
+\end{equation}
+由于我们考虑的微波腔一直在被外部光源驱动，所以还需要在哈密顿量中加入持续产生相干光子的驱动项
+\begin{equation}
+\hat{H}_{\mathrm{D}}=\sum_{p} \hbar \Omega_{p}\left({a}_{p} e^{i \omega_{\mathrm{0}} t}+{a}_{p}^{\dagger} e^{-i \omega_{\mathrm{0}} t}\right)
+\end{equation}
+其中$\Omega_{p}$是与光源功率$P$有关的参数，一般来说$|\Omega_{p}|^2 \propto P$。在我们的研究中主要考虑的是磁振子的基模即Kittel模与一个腔模的耦合，所使用的完整哈密顿量如下
+\begin{equation}
+H = \hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^{\dag}c+i\hbar\Omega(c^{\dag}e^{-i\omega_{0}t}-ce^{i\omega_{0}t})
+\label{Hamiltonian}
+\end{equation}
+其中$\omega_{c}$，$\omega_{m}$分别表示单个腔模和磁振子模的频率，$g$表示他们之间的耦合率。
