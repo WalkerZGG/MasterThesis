@@ -5,7 +5,7 @@
 \label{ch3}
 
 \section{腔磁振子系统的哈密顿量}
-本次研究中所考虑的腔磁振子系统是能实现强耦合的微波腔与YIG球耦合的系统，而本节所讨论的哈密顿量来源于Nakamura与Tang课题组的研究。在实验中使用的毫米尺度YIG球铁磁共振频率在GHz，而金属制微波腔通常会调制到TE101模式来实现腔中微波光场和YIG球的共振耦合。由于腔中光场每次经腔壁反射都会衰减掉一部分的能量，而YIG球也会因为因为与装置的接触损失一定的磁振子，所以需要对腔中光场进行相干驱动以保持系统中的耦合。关于系统耗散的机理我们会在下一节引入，整个的腔磁振子系统示意图如图\ref{FigSetup}所示:磁振子（YIG球）$m$处于腔内驻波$c$的磁场分量最大处，并且腔外还施加了一均匀偏置磁场$B$作用在磁振子上，这两种磁场方向互相垂直，腔外相干驱动源的频率为$\omega_0$，与腔的耦合强度为$\Omega$。
+本次研究中所考虑的腔磁振子系统是能实现强耦合的微波腔与YIG球耦合的系统，而本节所讨论的哈密顿量来源于Nakamura与Tang课题组的研究\ChangeNotation\cite{PhysRevLett.113.083603Nakamura,PhysRevLett.113.156401Tang,reviewCavityMagnonics}。在实验中使用的毫米尺度YIG球铁磁共振频率在GHz，而金属制微波腔通常会调制到TE101模式来实现腔中微波光场和YIG球的共振耦合。由于腔中光场每次经腔壁反射都会衰减掉一部分的能量，而YIG球也会因为与装置的接触损失一定的磁振子\ChangeNotation，所以需要对腔中光场进行相干驱动以保持系统中的耦合。关于系统耗散的机理我们会在下一节引入，整个的腔磁振子系统示意图如图\ref{FigSetup}所示:磁振子（YIG球）$m$处于腔内驻波$c$的磁场分量最大处，并且腔外还施加了一均匀偏置磁场$B$作用在磁振子上，这两种磁场方向互相垂直，腔外相干驱动源的频率为$\omega_0$，与腔的耦合强度为$\Omega$。
 \begin{figure}[htbp]
 	\centering
 	\includegraphics[width=0.5\textwidth,clip]{2_1}
@@ -37,22 +37,22 @@
 \label{EBARelations}
 \end{equation}
 
-波动方程\eqref{WaveFunction}具有形式解$\mathbf{A}(\mathbf{r}, t)\propto\sum_{k} \left[A_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ A_{k}^* \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right]$，二次量子化的操作就是将复振幅$A_{k}$，$A_{k}^*$替换为湮灭产生算符$c_{k}$，$c_{k}^{\dag}$：
+波动方程\eqref{WaveFunction}的解可以表示为平面波叠加的形式$\mathbf{A}(\mathbf{r}, t) = \sum_{k} \big[A_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ A_{k}^* \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\big]$，其中$\omega_{k}$表示角频率，$\mathbf{u}_{k}=e^{i \mathbf{k} \cdot  \mathbf{r}}\mathbf{e}_{k}$，$\mathbf{e}_{k}$为偏振矢量（polarization vector），$\mathbf{k}$为波矢\ChangeNotation。二次量子化的操作就是将复振幅$A_{k}$，$A_{k}^*$替换为湮灭产生算符$c_{k}$，$c_{k}^{\dag}$：
 \begin{equation}
-\hat{\mathbf{A}}(\mathbf{r}, t)\propto\sum_{k} \left[c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ c_{k}^{\dag} \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right] 
+\hat{\mathbf{A}}(\mathbf{r}, t)\rightarrow\sum_{k} \left[c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t}+ c_{k}^{\dag} \mathbf{u}_{k}^*(\mathbf{r}) e^{i \omega_{k} t}\right] 
 \label{SecondQuantized}
 \end{equation}
-在这一形式下使用关系\eqref{EBARelations}计算腔中光场的能量$E_c=1/2 \int_{V}\left(\varepsilon \mathbf{E} \cdot \mathbf{E}+1/\mu \mathbf{B} \cdot \mathbf{B}\right) d V$可以得到光场的哈密顿量
+在这一形式下使用关系\eqref{EBARelations}计算腔中光场的能量$E_c=1/2 \int_{V}\left(\varepsilon \mathbf{E} \cdot \mathbf{E}+1/\mu \mathbf{B} \cdot \mathbf{B}\right) d V$可以得到光场的哈密顿量\ChangeNotation\cite{gerry2005introductory}
 \begin{equation}
 \hat{H}_{\mathrm{c}} = \hbar \sum_{k} \omega_{k} c_{k}^{\dag} c_{k}
 \label{CavityHamiltonian}
 \end{equation}
-其中$\omega_{k}$表示模式数为$k$的微波腔共振频率，在这个过程中我们需要用下面的亥姆霍兹方程定出\eqref{SecondQuantized}中的归一化系数
+这里$\hbar$表示普朗克常数，在这个过程中我们需要用空间部分满足的亥姆霍兹方程的解来定出\eqref{SecondQuantized}中的系数\ChangeNotation\cite{reviewCavityMagnonics}
 \begin{equation}
 \left(\nabla^{2}+k^{2}\right) \mathbf{u}_{k}(\mathbf{r})=0
 \label{Helmholtz}
 \end{equation}
-二维矢量$\mathbf{u}_{k}$表示偏振方向并且满足$\int_{V} \mathbf{u}_{k} \cdot \mathbf{u}_{k^{\prime}}^{*} \mathrm{~d}^{3} r=V \delta_{k, k^{\prime}}$，$V$表示腔的内部体积。亥姆霍兹方程\eqref{Helmholtz}还需要满足周期性边界条件，这取决于具体腔的几何外形和材质。最终定出系数的场算符写作
+其解的二维矢量$\mathbf{u}_{k}$满足$\int_{V} \mathbf{u}_{k} \cdot \mathbf{u}_{k^{\prime}}^{*} \mathrm{~d}^{3} r=V \delta_{k, k^{\prime}}$，$V$表示腔的内部体积。亥姆霍兹方程\eqref{Helmholtz}还需要满足周期性边界条件，这取决于具体腔的几何外形和材质。最终定出系数的场算符写作
 \begin{align}
 &\hat{\mathbf{A}}(\mathbf{r}, t)= \sum_{k} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} + c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
 &\hat{\mathbf{E}}(\mathbf{r}, t)=i \sum_{k} \sqrt{\frac{\hbar \omega_{k}}{2 V \varepsilon_{0} \varepsilon}} \left[ c_{k} \mathbf{u}_{k}(\mathbf{r}) e^{-i \omega_{k} t} - c_{k}^{\dag} \mathbf{u}_{k}^{*} (\mathbf{r}) e^{i \omega_{k} t} \right] \\
@@ -61,9 +61,9 @@
 \end{align}
 
 \subsection{自旋波的量子化及与光场的耦合}
-处于YIG球中的自旋粒子之间有着强关联相互作用，这使得它们的集体运动表现出自旋波的行为，类似于声波可以量子化为声子那样，自旋波的量子化激子被称作磁振子。自旋波的激发会引起宏观上磁性材料磁化强度的变化，我们可以从磁化强度满足的演化方程出发，使用与上一小节类似的方法也可以将YIG球中的自旋波（磁化强度）量子化。
+处于YIG球中的自旋粒子（spins）之间有着强关联相互作用（strong interactions），这使得它们的集体运动表现出自旋波的行为，类似于声波可以量子化为声子那样，自旋波的量子化激子（excitations）被称作磁振子\ChangeNotation。自旋波的激发会引起宏观上磁性材料磁化强度的变化，我们可以从磁化强度满足的演化方程出发，使用与上一小节类似的方法也可以将YIG球中的自旋波（磁化强度）量子化。
 
-对于在外加偏置磁场$\mathbf{H}_0$中磁化的YIG球，用$\mathbf{M}$表示它的磁化强度，此时材料的自由能可以表示为
+对于在外加偏置磁场$\mathbf{H}_0$中磁化的YIG球，用$\mathbf{M}$表示它的磁化强度，此时材料的自由能可以表示为\cite{reviewCavityMagnonics}
 \begin{equation}
 \begin{aligned}
 E=\int_{V} \mathrm{~d}^{3} r \left[\frac{A}{M_{\mathrm{s}}^{2}} \sum_{i=x, y, z}\left|\nabla M_{i}\right|^{2}+U_{\mathrm{an}}[\mathbf{M}]-\mu_{0} \mathbf{M} \cdot \mathbf{H}_{0}-\frac{\mu_{0}}{2} \mathbf{M} \cdot \mathbf{H}_{\mathrm{d}}[\mathbf{M}]\right]
@@ -73,28 +73,28 @@ E=\int_{V} \mathrm{~d}^{3} r \left[\frac{A}{M_{\mathrm{s}}^{2}} \sum_{i=x, y, z}
 上式中第一项的积分表示磁化体系的交换能。第二项的积分表示各向异性能，对于常见的易轴各向异性会有正比于$M_z^2$的形式。第三项的积分表示与外加磁场间产生的Zeeman能。最后一项的积分表示退磁自能。从单个自旋的角动量定理可以得到磁化强度在无耗散时的演化方程
 \begin{equation}
 \dot{\mathbf{M}}=-\gamma \mathbf{M} \times \mu_{0} \mathbf{H}_{0}
-\label{NoDissLLEquation}
+\label{NoDissLLEquations}
 \end{equation}
-其中$\gamma=g_{\mathrm{Z}} \mu_{\mathrm{B}} / \hbar$表示旋磁比，$g_{\mathrm{Z}}$表示玻尔磁子，$\mu_{\mathrm{B}}$是电子的朗德因子。由于YIG的矫顽力很小，很容易达到饱和磁化状态，此时方程\eqref{NoDissLLEquation}的解可以理解为磁化强度在外加磁场限定的方向附近做微小震荡，即$\mathbf{M}(\mathbf{r},t)=\mathbf{M}_{\mathrm{s}}(\mathbf{r})+\delta \mathbf{M}(\mathbf{r}, t)$。我们此时所做的量子化操作如下
+其中$\gamma=g_{\mathrm{Z}} \mu_{\mathrm{B}} / \hbar$表示旋磁比，$g_{\mathrm{Z}}$表示玻尔磁子，$\mu_{\mathrm{B}}$是电子的朗德因子。由于YIG的矫顽力很小，很容易达到饱和磁化状态，此时方程\eqref{NoDissLLEquations}的解可以理解为磁化强度在外加磁场限定的方向附近做微小震荡，即$\mathbf{M}(\mathbf{r},t)=\mathbf{M}_{\mathrm{s}}(\mathbf{r})+\delta \mathbf{M}(\mathbf{r}, t)$。此时所做的量子化操作如下\cite{reviewCavityMagnonics}
 \begin{equation}
-\delta \hat{\mathbf{M}}(\mathbf{r}, t) \propto \frac{M_{\mathrm{s}}}{2} \sum_{\eta}\left[\mathbf{w}_{\eta}(\mathbf{r}) {m}_{\eta}+\mathbf{w}_{\eta}^{*}(\mathbf{r}) {m}_{\eta}^{\dagger}\right]
+\delta \hat{\mathbf{M}}(\mathbf{r}, t) \rightarrow \frac{M_{\mathrm{s}}}{2} \sum_{\eta}\left[\mathbf{w}_{\eta}(\mathbf{r}) {m}_{\eta}+\mathbf{w}_{\eta}^{*}(\mathbf{r}) {m}_{\eta}^{\dagger}\right]
 \label{MOperator}
 \end{equation}
-其中${m}_{\eta}$，${m}_{\eta}^{\dagger}$分别表示磁振子模式$\eta$下的湮灭和产生算符，$mathbf{w}_{\eta}$是对应的无量纲振幅。同样地用这一形式计算\eqref{FreeEnergy}，我们关注的是分平衡量$\delta \hat{\mathbf{M}}$产生的能量，积分项中只会包含$\delta \hat{\mathbf{M}}$的一次和二次项，而一次项的积分我们认为是零，剩下的二次项可以整理为磁振子的哈密顿量
+其中${m}_{\eta}$，${m}_{\eta}^{\dagger}$分别表示磁振子模式$\eta$下的湮灭和产生算符，$\mathbf{w}_{\eta}$是对应的无量纲振幅\ChangeNotation。同样地用这一形式计算\eqref{FreeEnergy}，我们关注的是变分量$\delta \hat{\mathbf{M}}$产生的能量\ChangeNotation，积分项中只会包含$\delta \hat{\mathbf{M}}$的一次和二次项，而一次项的积分我们认为是零，剩下的二次项可以整理为磁振子的哈密顿量
 \begin{equation}
 \hat{H}_{\mathrm{m}}=\hbar \sum_{\eta} \omega_{\eta} {m}_{\eta}^{\dagger} {m}_{\eta}
 \end{equation}
-其中$\omega_{\eta}$表示模式${\eta}$磁振子的铁磁共振频率。磁化强度算符归一化系数的计算依赖于不同的各向异性考量，具体可以查看参考文献。
+其中$\omega_{\eta}$表示模式${\eta}$磁振子的铁磁共振频率，可由方程\eqref{NoDissLLEquations}得到\cite{kittel2005introduction}。磁化强度算符归一化系数的计算依赖于不同的各向异性考量，具体可以查看参考文献\ChangeNotation\cite{reviewCavityMagnonics}。
 
-现在我们可以来考虑把YIG放置到微波腔中，并且外加偏置磁场使其饱和磁化。此时整个系统能量为
+现在我们可以来考虑把YIG放置到微波腔中，并且外加偏置磁场使其饱和磁化。此时整个系统能量为\cite{reviewCavityMagnonics}
 \begin{equation}
 \hat{\mathcal{H}}=\int_V \left(\frac{\varepsilon}{2} \hat{\mathbf{E}}^{2}+\frac{1}{2 \mu} \hat{\mathbf{B}}^{2}-\hat{\mathbf{M}} \cdot \hat{\mathbf{B}}+\hat{\mathcal{H}}_{\mathrm{m}}\right) d \mathbf{r}
 \end{equation}
-可以看出上式中前两项和最后一项分别表示微波腔中光场和磁振子本身的能量密度，第三项表示磁振子与微波的磁场分量相互作用的Zeeman能。我们将场算符\eqref{BOperator}和\eqref{MOperator}代入其中就能得到腔中光与磁振子相互作用的哈密顿量
+可以看出上式中前两项和最后一项分别表示微波腔中光场和磁振子本身的能量密度，第三项表示磁振子与微波的磁场分量相互作用的Zeeman能。我们将场算符\eqref{BOperator}和\eqref{MOperator}代入其中就能得到腔中光与磁振子相互作用的哈密顿量\ChangeNotation\cite{reviewCavityMagnonics}
 \begin{equation}
-\hat{H}_{\mathrm{cm}}=\hbar \sum_{k \eta}\left(g_{k \eta} \hat{a}_{k} \hat{m}_{\eta}^{\dagger}+g_{k \eta}^{*} \hat{a}_{k}^{\dagger} \hat{m}_{\eta}\right)
+\hat{H}_{\mathrm{cm}}=\hbar \sum_{k \eta}\left(g_{k \eta} \hat{c}_{k} \hat{m}_{\eta}^{\dagger}+g_{k \eta}^{*} \hat{c}_{k}^{\dagger} \hat{m}_{\eta}\right)
 \end{equation}
-上式中我们已经通过旋转波近似拿掉了粒子数不守衡的项，耦合率$g_{k \eta}$为
+上式中我们已经通过旋转波近似拿掉了粒子数不守衡的项\ChangeNotation，耦合率$g_{k \eta}$为
 \begin{equation}
 \hbar g_{k \eta}=-\frac{M_{s}}{2} \sqrt{\frac{\hbar}{2 V \varepsilon_{0} \varepsilon \omega_{k}}} \int d \mathbf{r}\left[\nabla \times \mathbf{u}_{k}(\mathbf{r})\right] \cdot \mathbf{w}_{\eta}^{*}(\mathbf{r})
 \end{equation}
@@ -106,9 +106,9 @@ E=\int_{V} \mathrm{~d}^{3} r \left[\frac{A}{M_{\mathrm{s}}^{2}} \sum_{i=x, y, z}
 \end{equation}
 由于我们考虑的微波腔一直在被外部光源驱动，所以还需要在哈密顿量中加入持续产生相干光子的驱动项
 \begin{equation}
-\hat{H}_{\mathrm{D}}=\sum_{p} \hbar \Omega_{p}\left({a}_{p} e^{i \omega_{\mathrm{0}} t}+{a}_{p}^{\dagger} e^{-i \omega_{\mathrm{0}} t}\right)
+\hat{H}_{\mathrm{D}}=\sum_{p} \hbar \Omega_{p}\left({c}_{p} e^{i \omega_{\mathrm{0}} t}+{c}_{p}^{\dagger} e^{-i \omega_{\mathrm{0}} t}\right)
 \end{equation}
-其中$\Omega_{p}$是与光源功率$P$有关的参数，一般来说$|\Omega_{p}|^2 \propto P$。在我们的研究中主要考虑的是磁振子的基模即Kittel模与一个腔模的耦合，所使用的完整哈密顿量如下
+其中$\Omega_{p}$是与光源功率$P$有关的参数\ChangeNotation，一般来说$|\Omega_{p}|^2 \propto P$。在我们的研究中主要考虑的是磁振子的基模即Kittel模与一个腔模的耦合，所使用的完整哈密顿量如下
 \begin{equation}
 H = \hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^{\dag}c+i\hbar\Omega(c^{\dag}e^{-i\omega_{0}t}-ce^{i\omega_{0}t})
 \label{Hamiltonian}
@@ -125,7 +125,7 @@ H = \hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^
 \mathcal{H}=H_{S}+H_{R}+H_{S R}
 \label{Hsr}
 \end{equation}
-这里$H_{S}$和$H_{R}$分别是系统和环境的哈密顿量，$H_{SR}$为相互作用的哈密顿量。我们可以先不拘泥于环境哈密顿量的具体形式，只需要知道他可以表示为温度和能量的函数。我们的目标是在无需关注环境具体状态的情形下研究混合体系$S \otimes R$中目标系统$S$的演化。为了做到这一点，需要用到密度算符的工具。我们用$\chi(t)$表示$S \otimes R$的密度算符并对环境的部分求迹，定义约化密度算符为
+这里$H_{S}$和$H_{R}$分别是系统和环境的哈密顿量，$H_{SR}$为相互作用的哈密顿量。我们可以先不拘泥于环境哈密顿量的具体形式，只需要知道它可以表示为温度和能量的函数。我们的目标是在无需关注环境具体状态的情形下研究混合体系$S \otimes R$中目标系统$S$的演化。为了做到这一点，需要用到密度算符的工具。我们用$\chi(t)$表示$S \otimes R$的密度算符并对环境的部分求迹，定义约化密度算符为
 \begin{equation}
 \rho(t) \equiv \operatorname{tr}_{R}[\chi(t)]
 \end{equation}
@@ -133,7 +133,7 @@ H = \hbar\omega_{c}c^{\dag}c+\hbar\omega_{m}m^{\dag}m+\hbar gc^{\dag}m+\hbar gm^
 \begin{equation}
 \langle\hat{O}\rangle=\operatorname{tr}_{S \otimes R}[\hat{O} \chi(t)]=\operatorname{tr}_{S}\left\{\hat{O} \operatorname{tr}_{R}[\chi(t)]\right\}=\operatorname{tr}_{S}[\hat{O} \rho(t)]
 \end{equation}
-接下来我们要做的是得到$\rho(t)$演化方程。
+接下来我们要做的是得到$\rho(t)$的演化方程。
 
 %Schr\"{o}dinger
 已知$\chi$的Liouville--von Neumann方程为
@@ -441,7 +441,7 @@ m|\beta\rangle=\beta|\beta\rangle,& \quad\langle\beta| m^{\dagger}=(m|\beta\rang
 \label{MeanDefination}
 \end{equation}
 
-此外，关于$P$表象还值得一提的是，Glauber-Sudarshan $P$表象\eqref{Pfun}只是$P$表象的一种形式，原则上可以使用不同的概率分布函数$P$来定义$P$表象的积分\cite{walls2007quantum}。其它的$P$表象如复数$P$表象（complex $P$ representation），正定$P$表象（positive $P$ representation）等在处理非线性系统时很有帮助，但是对于我们这里的系统 \eqref{Hamiltonian}，使用\eqref{Pfun}就足够了。
+此外，关于$P$表象还值得一提的是，Glauber-Sudarshan $P$表象\eqref{Pfun}只是$P$表象的一种形式，原则上可以使用不同的概率分布函数$P$来定义$P$表象的积分\cite{walls2007quantum}。其他的$P$表象如复数$P$表象（complex $P$ representation），正定$P$表象（positive $P$ representation）等在处理非线性系统时很有帮助，但是对于我们这里的系统 \eqref{Hamiltonian}，使用\eqref{Pfun}就足够了。
 
 \subsection{腔磁振子系统的Fokker-Planck方程}
 现在我们将系统的哈密顿量\eqref{Hamiltonian}以及$P$表象下的密度算符\eqref{Pfun}代入到主方程\eqref{MasterEquation}中
@@ -536,7 +536,7 @@ m^{\dag}|\alpha,\beta\rangle\langle \alpha,\beta|=(\frac{\partial}{\partial\beta
 上面的方程和前面得到的主方程\eqref{MasterEquation}是完全等价的，但是在非线性系统中可能会有些差别，具体参见相关研究\cite{PhysRevA.66.033812Drummond}。另外，可以看出Fokker-Planck方程\eqref{Fokker-Planck}是关于$P$函数的含时二阶偏微分方程，我们可以通过假设长时间演化后的稳态形式去掉时间变量来得到系统的稳态解，但是还有另外一种数值方法来得到方程的含时解，那就是随机微分方程。
 
 \section{随机微分方程}
-随机微分方程是应用数学领域中非常重要的一类方程，在金融学、电路滤波问题、优化问题等方面都有着广泛的应用。随机微分方程在数学上有着一套严格的定义和证明，详细可参考相关书籍\cite{gardiner1985handbook}，我们这里着重理解概念以及在物理系统中的使用。
+随机微分方程是应用数学领域中非常重要的一类方程，在金融学、电路滤波问题、优化问题等方面都有着广泛的应用。随机微分方程在数学上有着一套严格的定义和证明，详细可参考相关书籍\cite{bernt2012}\cite{gardiner1985handbook}，我们这里着重理解概念以及在物理系统中的使用。
 
 \subsection{随机过程与It\^o积分}
 我们先考虑一组随机变量序列$X_{1}, X_{2}, \ldots, X_{n}, \ldots$，假如它们对应于一组时刻序列$t_{1}<t_{2}<\cdots<t_{n}<\cdots$，我们就称这一族时间依赖的随机变量$\{X_{t}\}$为一个随机过程。物理学中有一个经典的随机过程，就是布朗运动。我们知道由于随机涨落力的影响，悬浮于液体中的花粉会表现出无规则的运动，即使花粉保持同样的初始条件每次的运动轨迹也不会完全重合。但是当大量花粉从相同的初始状态运动时，每一时刻的花粉位置就表现出统计上的分布规律，也就是一个随机过程。
@@ -550,7 +550,7 @@ m^{\dag}|\alpha,\beta\rangle\langle \alpha,\beta|=(\frac{\partial}{\partial\beta
 \begin{equation}
 \xi_t \cdot dt=d W_t
 \end{equation}
-这里的$W_t$是一个随机过程，也被称为Wiener过程，在$\Delta t$的时间间隔内$\Delta W_t$是一个服从均值为0，方差为 $\Delta t$ 的高斯分布的随机变量。借助Wiener过程就可以把方程\eqref{StochasticEq}写为一般的随机微分方程的形式
+这里的$W_t$是一个随机过程，也被称为Wiener过程，在$\Delta t$的时间间隔内$\Delta W_t$是一个服从均值为0，方差为 $\Delta t$ 的高斯分布的随机变量\cite{carmichael1999statistical}。借助Wiener过程就可以把方程\eqref{StochasticEq}写为一般的随机微分方程的形式
 \begin{equation}
 d X_t=A(t,X_t) dt + B(t,X_t) d W_t
 \label{StochasticDiff}
@@ -585,14 +585,14 @@ X_t=X_0 + \int_{0}^{t} A(s,X_s) ds + \int_{0}^{t} B(s,X_s) d W_s
 \begin{equation}
 \frac{\partial P\left(t,X \mid 0,X_{0}\right)}{\partial t} = \left(-\frac{\partial}{\partial X} A+\frac{1}{2} \frac{\partial^{2}}{\partial X^2} BB\right) P\left(t,X \mid 0,X_{0}\right)
 \end{equation}
-上式中的$P\left(X, t \mid X_{0}, 0\right)$表示条件概率密度函数，微分算子全都是满足确定变量微分规则的经典微分。反过来我们也可以写出Fokker-Planck方程\eqref{Fokker-Planck}所对应的It\^o随机微分方程组
+上式中的$P\left(t,X \mid 0,X_{0}\right)$表示条件概率密度函数，微分算子全都是满足确定变量微分规则的经典微分。反过来我们也可以写出Fokker-Planck方程\eqref{Fokker-Planck}所对应的It\^o随机微分方程组
 \begin{align}
 d{{\alpha}}&=(-i\omega_{c}{\alpha}-ig{\beta}+\Omega e^{-i\omega_{0}t}-\kappa_{c}{\alpha})dt+\sqrt{\kappa_c\overline{n}_{c}}(dW_1+idW_2) \label{sdes1} \\
 d{{\alpha^{*}}}&=(i\omega_{c}{\alpha^{*}}+ig{\beta^{*}}+\Omega e^{i\omega_{0}t}-\kappa_{c}{\alpha^{*}})dt+\sqrt{\kappa_c\overline{n}_{c}}(dW_1-idW_2) \\
 d{{\beta}}&=(-i\omega_{m}{\beta}-ig{\alpha}-\kappa_{m}{\beta})dt+\sqrt{\kappa_m\overline{n}_{m}}(dW_3+idW_4) \\
 d{{\beta^{*}}}&=(i\omega_{m}{\beta^{*}}+ig{\alpha^{*}}-\kappa_{m}{\beta^{*}})dt+\sqrt{\kappa_m\overline{n}_{m}}(dW_3-idW_4) \label{sdes4}
 \end{align}
-其中$dW_i~(i=1,2,3,4)$是互相独立的Wiener过程。
+其中$W_i~(i=1,2,3,4)$是互相独立的Wiener过程。
 
 随机微分方程不像通常的微分方程那样拥有确定的时间演化，我们可以通过数值模拟的方法得到每次演化的轨迹，尽管每次的轨迹都不尽相同，但是当模拟的轨迹足够多的时候，轨迹的平均以及高阶矩却会趋向于平滑，这也正是我们想要的平均粒子数和高阶关联的信息。在用算法模拟随机微分方程之前，我们可以先把方程组\eqref{sdes1}--\eqref{sdes4}变换到旋转坐标系下，也就是把随机变量写作$\alpha=\tilde{\alpha}(t) e^{-i\omega_{0}t}, \beta=\tilde{\beta}(t) e^{-i\omega_{0}t}$，这有利于我们去掉系统中高速震荡的影响从而加速后面的模拟，变换后的随机微分方程组写作
 \begin{align}
@@ -601,15 +601,24 @@ d{\tilde{\alpha}^{*}}&=\big(i(\omega_{c}-\omega_{0})\tilde{\alpha}^{*}+ig\tilde{
 d{\tilde{\beta}}&=\big(-i(\omega_{m}-\omega_{0})\tilde{\beta}-ig\tilde{\alpha}-\kappa_{m}\tilde{\beta}\big)dt+\sqrt{\kappa_m\overline{n}_{m}}(d\tilde{W}_3+id\tilde{W}_4) \\
 d{\tilde{\beta}^{*}}&=\big(i(\omega_{m}-\omega_{0})\tilde{\beta}^{*}+ig\tilde{\alpha}^{*}-\kappa_{m}\tilde{\beta}^{*}\big)dt+\sqrt{\kappa_m\overline{n}_{m}}(d\tilde{W}_3-id\tilde{W}_4) \label{RotateSDEs4}
 \end{align}
-其中$d\tilde{W}_i~(i=1,2,3,4)$也是互相独立的Wiener过程。这里拿$d\tilde{W}_1$简单说明旋转坐标变换后的方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}和\eqref{sdes1}--\eqref{sdes4}是等价的，借用It\^o积分的定义\eqref{ItoIntegral}可得
+其中$\tilde{W}_i~(i=1,2,3,4)$也是互相独立的Wiener过程。我们用积分形式表示方程组
 \begin{equation}
 \begin{aligned}
-\int e^{i\omega_{0}t^{\prime}} d W_{1t^{\prime}} ={}& \int \left[\cos({\omega_{0}t^{\prime}})+i\sin({\omega_{0}t^{\prime}})\right] d W_{1t^{\prime}} \\
+\int d{\tilde{\alpha}}&=\int \big(-i(\omega_{c}-\omega_{0})\tilde{\alpha}-ig\tilde{\beta}+\Omega -\kappa_{c}\tilde{\alpha}\big)dt^{\prime}+\sqrt{\kappa_c\overline{n}_{c}}(\int d\tilde{W}_1+i\int d\tilde{W}_2) \\
+\int d{\tilde{\alpha}^{*}}&=\int \big(i(\omega_{c}-\omega_{0})\tilde{\alpha}^{*}+ig\tilde{\beta}^{*}+\Omega -\kappa_{c}\tilde{\alpha}^{*}\big)dt^{\prime}+\sqrt{\kappa_c\overline{n}_{c}}(\int d\tilde{W}_1-i\int d\tilde{W}_2) \\
+\int d{\tilde{\beta}}&=\int \big(-i(\omega_{m}-\omega_{0})\tilde{\beta}-ig\tilde{\alpha}-\kappa_{m}\tilde{\beta}\big)dt^{\prime}+\sqrt{\kappa_m\overline{n}_{m}}(\int d\tilde{W}_3+i\int d\tilde{W}_4) \\
+\int d{\tilde{\beta}^{*}}&=\int \big(i(\omega_{m}-\omega_{0})\tilde{\beta}^{*}+ig\tilde{\alpha}^{*}-\kappa_{m}\tilde{\beta}^{*}\big)dt^{\prime}+\sqrt{\kappa_m\overline{n}_{m}}(\int d\tilde{W}_3-i\int d\tilde{W}_4)
+\end{aligned}
+\end{equation}
+这里拿$\int d\tilde{W}_1$简单说明旋转坐标变换后的方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}和\eqref{sdes1}--\eqref{sdes4}是等价的，借用It\^o积分的定义\eqref{ItoIntegral}可得
+\begin{equation}
+\begin{aligned}
+\int d\tilde{W}_{1t^{\prime}}=\int e^{i\omega_{0}t^{\prime}} d W_{1t^{\prime}} ={}& \int \left[\cos({\omega_{0}t^{\prime}})+i\sin({\omega_{0}t^{\prime}})\right] d W_{1t^{\prime}} \\
 ={}& \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} \cos({\omega_{0}t_k})\left(W_{1t_{k+1}}-W_{1t_{k}}\right) \\
 &+ \lim\limits_{\Delta t \to 0} \sum_{k=0}^{i-1} i\sin({\omega_{0}t_k})\left(W_{1t_{k+1}}-W_{1t_{k}}\right)
 \end{aligned}
 \end{equation}
-由于高斯分布的和也是高斯分布，所以不难看出$d\tilde{W}_1$可以写作新的Wiener过程的线性组合。独立性可以从协方差看出来：
+不难看出$\int d\tilde{W}_1$可以写作一系列新的Wiener过程的线性组合，由于高斯分布的和也是高斯分布，所以$\tilde{W}_1$依然是一个Wiener过程\ChangeNotation。独立性可以从协方差看出来：
 \begin{equation}
 \begin{aligned}
 E\bigg(\int d \tilde{W}_{1t^{\prime}} &\int d \tilde{W}_{2t^{\prime}}\bigg) \\
@@ -631,7 +640,7 @@ E\bigg(\int d \tilde{W}_{1t^{\prime}} &\int d \tilde{W}_{2t^{\prime}}\bigg) \\
 \bar{\tilde{\beta}}_{n+1}&=\bar{\tilde{\beta}}_{n}+(-i(\omega_{m}-\omega_{0})\bar{\tilde{\beta}}_{n}-ig\bar{\tilde{\alpha}}_{n}-\kappa_{m}\bar{\tilde{\beta}}_{n})\Delta t+\sqrt{\kappa_m\overline{n}_{m}}(\Delta{W}_{3n}+i\Delta{W}_{4n})
 \end{aligned}
 \end{equation}
-另外两个共轭方程已包含在内。Euler算法虽然简单易理解，但却收敛性较差，在测试中对于我们所选取的参数$1$~ns的计算需要$0.1$~fs的步长才能收敛，对于目标的$400$~ns总时长来说计算机时过于巨大，因此我们需要更高效的算法。随机微分方程的模拟算法方向有很多研究\cite{Kloeden1992numerical}，其中一种可接受的算法是高阶Taylor算法，就像通常微分方程的Taylor算法一样，借助Taylor展开将高阶导数引入差分之中就可以得到高阶Taylor算法。只不过由于随机微分方程特殊的微积分规则，它的高阶Taylor展开的形式和通常微分方程是不一样的，但是推导Taylor展开的思路却是一致的，这里不作展开，直接给出方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的二阶弱收敛Taylor算法为
+另外两个共轭方程已包含在内。Euler算法虽然简单易理解，但却收敛性较差，在测试中对于我们所选取的参数$1$~ns的计算需要$0.1$~fs的步长才能收敛，对于目标的$400$~ns总时长来说计算机时过于巨大，因此我们需要更高效的算法。随机微分方程的模拟算法方向有很多研究\cite{TOCINO2002219,Kloeden1992numerical}，其中一种可接受的算法是高阶Taylor算法，就像通常微分方程的Taylor算法一样，借助Taylor展开将高阶导数引入差分之中就可以得到高阶Taylor算法。只不过由于随机微分方程特殊的微积分规则，它的高阶Taylor展开的形式和通常微分方程是不一样的，但是推导Taylor展开的思路却是一致的，这里不作展开，直接给出方程组\eqref{RotateSDEs1}--\eqref{RotateSDEs4}的二阶弱收敛Taylor算法为
 \begin{equation}
 \begin{aligned}
 \bar{\tilde{\alpha}}_{n+1}={}&\bar{\tilde{\alpha}}_{n}+(-i(\omega_{c}-\omega_{0})\bar{\tilde{\alpha}}_{n}-ig\bar{\tilde{\beta}}_{n}+\Omega -\kappa_{c}\bar{\tilde{\alpha}}_{n})\Delta t+\sqrt{\kappa_c\overline{n}_{c}}(\Delta{W}_{1n}+i\Delta{W}_{2n}) \\
